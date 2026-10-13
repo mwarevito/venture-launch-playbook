@@ -1,6 +1,6 @@
 # Payments with Stripe, from zero to the first real payment
 
-A subscription product needs very little billing to take its first dollar: Stripe Checkout as the sign-up, a small webhook, the customer portal and one table that says who has access. This file takes you from an empty Stripe account to live payments, with the agent doing almost all of it and the founder spending about 45 minutes across three short sittings (S1a, S2 and S3b). Refund buttons, top-ups and plan ladders wait until someone has paid.
+A subscription product needs very little billing to take its first dollar: Stripe Checkout as the sign-up, a small webhook, the customer portal and one table that says who has access. This file takes you from an empty Stripe account to live payments, with the agent doing almost all of it and the founder spending about 30 minutes across three short sittings (S1a, S2 and S3b), plus the money and tax decisions. Refund buttons, top-ups and plan ladders wait until someone has paid.
 
 **Done when:** a live Stripe account can charge and pay out; the app creates its own product, prices, webhook and portal from one key in both sandbox and live; every offer has passed a live preflight (a Checkout session created, read and expired); and the founder has paid with a real card, been refunded, and the agent has seen the refund in Stripe and in the app's database.
 

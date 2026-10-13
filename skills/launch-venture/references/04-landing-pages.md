@@ -278,7 +278,7 @@ Exclude the team (a cookie set when they open the app or admin pages, their IP f
 - Test with Meta's test events, TikTok's test event code and Google Tag Assistant. **(learned the hard way)** Givi's check fired a fake sign-up into three live dashboards.
 - Expect low consent, and decide on your server counts.
 
-**See what visitors do.** Session replay after Allow: Microsoft Clarity (free; since 31 Oct 2025 it needs a consent signal for EEA, UK and Swiss visitors) or PostHog. Alert when a paid source's Start rate falls below about a third of direct traffic's after 100 visits **(recommended, not tested by us)**. Givi found its 1-in-60 Meta Start rate a week into ads.
+**See what visitors do.** Session replay after Allow: Microsoft Clarity (free; since 31 Oct 2025 it needs a consent signal for EEA, UK and Swiss visitors) or PostHog. Alert when a paid source's Start rate falls below about a third of direct traffic's after 100 visits **(recommended, not tested by us)**. Givi found its 1-in-60 Meta Start rate only after days of paid traffic.
 
 ---
 

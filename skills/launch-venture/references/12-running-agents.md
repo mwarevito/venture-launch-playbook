@@ -354,7 +354,7 @@ rm -- "$0"; read -k1
 
 Each check comes from Givi: the prefix and length checks caught a live key pasted twice into one string; the provider call caught a wrong text saved as a key; reading the clipboard replaced a hidden `read -s` prompt that stored one key three times over; clearing the clipboard and deleting the script leave nothing behind.
 
-**Dry-run every script with a dummy value before handing it over.** Three Givi hand-offs failed on agent bugs: an inner heredoc swallowed stdin, an untested CLI flag stored nothing, and a script stored a key without testing it. One key took about 2.5 hours to land; a dummy run during the wait would have found both bugs **(learned the hard way)**.
+**Dry-run every script with a dummy value before handing it over.** Three Givi hand-offs failed on agent bugs: an inner heredoc swallowed stdin, an untested CLI flag stored nothing, and a script stored a key without testing it. One key took about 2.5 hours to land; a dummy run during the wait would have found all three bugs **(learned the hard way)**.
 
 ### 7.3 `!` lines do not run in the VS Code panel
 

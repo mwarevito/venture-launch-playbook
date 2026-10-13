@@ -4,7 +4,7 @@ Agents find the people, draft every message, keep one pipeline and chase anythin
 
 **Done when:** 20-30 personal notes went out on the day friends could first use the product, with a sent log; every tester was asked for one introduction; the founder posts about 5 agent-drafted LinkedIn comments a day; if cold email is in the plan, it runs from lookalike domains with warmed mailboxes, verified leads and a legal footer, and its first approved batch has gone; one pipeline sheet counts contacted, replied, call, trial and paid every day; the stop rule is read every week.
 
-> **Read this first: outreach was Givi's biggest miss.** In 26 days the team sent 0 warm messages and 0 cold emails. Two notes to testers were drafted about a week after friends could use the product and never sent; the wider warm list was never drafted. The cold-email setup (roughly $130 for an Instantly plan, two domains and pre-warmed mailboxes) was never put to Vito as its own question, so it died without anyone deciding to stop it. All 5 conversations with real target buyers came from comments on buyers' posts made from Vito's personal LinkedIn by an unattended agent run (section 3.1 explains why that part must not be copied), and none had become a call or a payment by day 26. Givi had no paying customers on 12 Oct 2026. So most of this guide is **(recommended, not tested by us)**, built from documentation checked on 13 Oct 2026, and the lessons are **(learned the hard way)**.
+> **Read this first: outreach was Givi's biggest miss.** In 26 days the team sent 0 warm messages and 0 cold emails. Two notes to testers were drafted about a week after friends could use the product and never sent; the wider warm list was never drafted. The cold-email setup (roughly $130 for an Instantly plan, two domains and pre-warmed mailboxes) was never put to Vito as its own question, so it died without anyone deciding to stop it. All 5 conversations with real target buyers came from comments on buyers' posts made from Vito's personal LinkedIn by an unattended agent run (section 3.1 explains why that part must not be copied), and none had become a call or a payment by the end of the 26 days. Givi had no paying customers on 12 Oct 2026. So most of this guide is **(recommended, not tested by us)**, built from documentation checked on 13 Oct 2026, and the lessons are **(learned the hard way)**.
 
 Evidence tags: **(done on Givi)** we did it and it worked; **(learned the hard way)** we got it wrong first; **(recommended, not tested by us)** from current docs or common practice.
 
@@ -83,7 +83,7 @@ One real detail per person, 60-90 words, no "hope you're well", no feature list,
 
 These are the founder's personal accounts, so agents draft and the founder sends. Messaging apps restrict accounts that send many similar messages quickly, especially to non-contacts (general platform behaviour, not tested on Givi), and a bot sending from the founder's account is the founder speaking without having read the words.
 
-### 2.5 The go-live sitting (S3a, about 30 minutes)
+### 2.5 The go-live sitting (S3a, about 15-20 minutes)
 
 1. The revenue owner posts the whole list with every text in one numbered message.
 2. The founder answers "ok" or edits by number ("7: drop the second sentence"). Approving takes the 15-20 minutes that sitting S3a budgets.
@@ -417,7 +417,7 @@ complaint and reply rates per mailbox against the stop rules; pause_campaign if 
 |---|---|---|
 | Buyer and stop rule | founder, day 0 (agent drafts) | 2 minutes |
 | Money: plan, domains, mailboxes, credits | founder's yes on exact figures (`simulation` shown) | 2 minutes |
-| Warm list and texts | founder approves once in sitting S3a, sends personal messages themselves | 30 minutes, once |
+| Warm list and texts | founder approves once in sitting S3a, sends personal messages themselves | 15-20 minutes, once |
 | Notes to early sign-ups | founder sends agent drafts | 1 minute each |
 | LinkedIn comments, replies, notes, messages | founder posts from their clipboard, always | 5-10 minutes a day |
 | Cold list and copy | founder, once per new list or copy | 10 minutes |

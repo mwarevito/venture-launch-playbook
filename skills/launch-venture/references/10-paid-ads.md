@@ -49,6 +49,7 @@ Run by a session that does not own the ads and did not build the sign-up path. T
 1. **In-app browser emulation.** With gstack's `browse` headless browser (or Playwright), at a phone viewport, using each real in-app user-agent string:
 
    ```bash
+   B=~/.claude/skills/gstack/browse/dist/browse   # as in 04-landing-pages.md
    $B viewport 390x844
    $B useragent "<current Instagram in-app user agent for iOS>"
    $B goto https://yourdomain.com/?utm_source=meta
@@ -300,7 +301,7 @@ If it fits (consumer or creator products):
 
 - The founder creates the TikTok Business Center and ad account (currency, time zone), verifies the phone, and links the brand's TikTok account as the ad identity on the same day. Givi's launch was blocked because the identity was not linked. **(learned the hard way)**
 - **Prepay a fixed amount** (manual payment): ads stop when the balance runs out, which works as a hard cap. **(done on Givi)**
-- Minimums: about $20 a day per ad group (or $50 if the budget sits at campaign level), so a £50 prepay lasts about 2.5 days. TikTok says most ads are reviewed within 24 hours; Givi's took more than 6, and every edit goes back to review.
+- Minimums: about $20 a day per ad group (or $50 if the budget sits at campaign level), so a £50 prepay lasts about 3 days at the ad-group minimum. TikTok says most ads are reviewed within 24 hours; Givi's took more than 6 hours, and every edit goes back to review.
 - Build in the UI with Claude in Chrome in the founder's own browser (TikTok blocks the gstack browser). Website traffic objective, landing page views, the pixel, budget on the ad group, TikTok placement only (untick partner apps), identity set to "Only show as ads", one call to action.
 - **Before publishing,** remove TikTok's AI-suggested text and auto-added "selling points" (Givi's ad was given "5-Star Reviews", "Top Seller Ranking" and "Fast & Free Shipping", none true), and switch off automatic enhancements that replace music and dub audio. **(learned the hard way)**
 - Never use a tool that creates TikTok campaigns live; Adspirer's did, so Givi built by hand.
