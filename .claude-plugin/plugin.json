@@ -1,0 +1,12 @@
+{
+  "name": "launch-venture",
+  "description": "Launch and run a new online business from zero with Claude Code and Codex: a framework and field-tested playbook from a real 26-day SaaS launch, covering accounts, payments, landing pages, outreach, content without AI slop, ads and daily operations.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Vito"
+  },
+  "homepage": "https://github.com/mwarevito/venture-launch-playbook",
+  "repository": "https://github.com/mwarevito/venture-launch-playbook",
+  "license": "MIT",
+  "keywords": ["startup", "launch", "founder", "agents", "stripe", "outreach", "ads", "playbook"]
+}

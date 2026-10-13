@@ -1,0 +1,14 @@
+{
+  "name": "venture-launch-playbook",
+  "description": "A launch playbook for founders who build with AI agents",
+  "owner": {
+    "name": "Vito"
+  },
+  "plugins": [
+    {
+      "name": "launch-venture",
+      "source": "./",
+      "description": "Launch and run a new online business from zero with Claude Code and Codex"
+    }
+  ]
+}
