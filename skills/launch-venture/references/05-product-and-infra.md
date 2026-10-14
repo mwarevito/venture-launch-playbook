@@ -6,7 +6,7 @@ The product phase turns the founder's day-0 idea into something a stranger can s
 
 Railway, Supabase, GitHub, Google and OpenRouter details were checked against their docs on 13 Oct 2026. Re-check prices and limits before relying on them.
 
-> **What happened on Givi.** On day 0 Vito asked to reuse the personal AI assistant he already ran, one copy per customer, in Telegram, Slack or any chat. On day 2 a design doc proposed exactly that. From day 5 one agent built something else: a platform that started a fresh machine for every task, with 4 services, about 45 secured tables, credits and 300+ tests. A fresh machine took 64-92 seconds to start; even "what can you do?" took 28 seconds. Another agent spotted the mismatch and never raised it. On day 9 the founder wrote that production was garbage. The pivot back to his original idea went live for friends 26 hours later, a speed that came from reusing accounts the detour had created. The detour cost about 7.5 days on the critical path, because his day-0 words were never written down as acceptance criteria and there was no kill rule. **(learned the hard way)**
+> **What happened on Givi.** On day 0 Vito asked to reuse the personal AI assistant he already ran, one copy per customer, in Telegram, Slack or any chat. On day 2 a design doc proposed exactly that. From day 5 one agent built something else: a platform that started a fresh machine for every task, with 4 services, about 45 secured tables, credits and 300+ tests. A fresh machine took 64-92 seconds to start; even "what can you do?" took 28 seconds. Another agent spotted the mismatch and never raised it. On day 9 the founder rejected production. The pivot back to his original idea went live for friendly testers 26 hours later, a speed that came from reusing accounts the detour had created. The detour cost about 7.5 days on the critical path, because his day-0 words were never written down as acceptance criteria and there was no kill rule. **(learned the hard way)**
 
 ---
 
@@ -81,7 +81,7 @@ A cold build took 2-4 minutes. A pool of 3 pre-started spares, claimed atomicall
 
 ### 3.4 Model accounts and per-tenant capped keys
 
-- **Own model account per venture**, created in sitting S1a, with auto top-up and an account limit below the weekly money ceiling. Givi's balance was shared with another business that had paying customers; it was found nearly empty late at night, partly drained by the agents' own overnight tests, and paid calls froze for about 19 hours. **(learned the hard way)**
+- **Own model account per venture**, created in sitting S1a, with auto top-up and an account limit below the weekly money ceiling. Givi ran on a shared model-credit balance; it was found nearly empty, partly drained by the agents' own overnight tests, and paid calls froze for about 19 hours. **(learned the hard way)**
 - **A capped key per customer and per purpose.** On OpenRouter, create a Management API key (Settings > Management Keys); it can only administer keys. The app server mints child keys with `POST /api/v1/keys` (`name`, `limit`, optional `limit_reset: "monthly"`) and raises a limit on payment with `PATCH /api/v1/keys/{hash}`. Givi used about $2 for a trial and $20-30 for a paid month, with separate keys for the effort judge, voice and tests. The management key never leaves the app server. **(done on Givi; endpoints checked 13 Oct 2026)**
 - **Agents' own tests use a separate capped key** and check the balance first, refusing below a floor. **(recommended, not tested by us)**
 - **Watch the balance from outside the product**, from a scheduled cloud job with a read-only credential; alert below a few days of spend. A check inside the product stops when the money does. **(recommended, not tested by us)**
@@ -111,9 +111,9 @@ Givi spent about $5 on a 7-model eval, about $1 on a live benchmark and about $4
 
 | Setting | Default | Why |
 |---|---|---|
-| Workspace | A new one per venture, Pro plan, the venture's own card, created in sitting S1a | Limits apply workspace-wide; on Givi another product had already used the included credit **(learned the hard way)** |
+| Workspace | A new one per venture, Pro plan, the venture's own card, created in sitting S1a | Limits apply workspace-wide; on Givi other work in a shared workspace had already used the included credit **(learned the hard way)** |
 | Usage limit | `railway usage limit set --target workspace --soft <$> --hard <$>` | A cap you chose, with an email first |
-| Project | One product per project | A `railway add` name clash wrote stray variables onto another product's live service **(learned the hard way)** |
+| Project | One product per project | A `railway add` name clash wrote stray variables onto another live service **(learned the hard way)** |
 | Live environment | Named `production` on day 1 | Givi's live app ran in one called `staging`, which confused every script **(learned the hard way)** |
 | Pre-production | A second environment or PR environments, side effects pointed at test accounts | Givi tried changes on live owners **(recommended, not tested by us)** |
 | Region | Next to the database | Fixed at creation |

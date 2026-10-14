@@ -169,7 +169,7 @@ Default: none (money). I will re-ask at 18:00.
 | F1 | Day-0 asks, product bar, kill rule | day 0, before any build | about 7.5 days on the wrong product |
 | F2 | Runtime and data: one product line, managed Postgres, no app database on a volume | day 1 | two outages, weeks of deploys waiting for idle users |
 | F3 | One market, one buyer, one first paid job, "why us", stop rule | end of day 1 | about 6 repositionings |
-| F4 | Name, screened (domains, company register, same-category products, trademarks in each launch market, handles); then the logo | name end of day 0 or 1; logo end of day 1 | the name was never trademark-screened; the logo came 14 days after it |
+| F4 | Name, screened (domains, company register, same-category products, trademarks in each launch market, handles); then the logo | name end of day 0 or 1; logo end of day 1 | the logo came 14 days after the name |
 | F5 | Offer: price, currency, trial, refund window, allowance, VAT stance | day 1-2 after a 1-hour cost test (day 2-3 from zero); no public price before | 5 setups in 12 days, mass re-renders |
 | F6 | Taste and bans | day 0, before any design agent | about 15 landing rounds |
 | F7 | Channels per market, after a 30-minute policy check each | day 0 | a WhatsApp detour |
@@ -226,7 +226,7 @@ Each gate has a pass bar and a runner who is not the author. A failed gate is fi
 
 ## 8. Day 0 accounts and the sittings
 
-**Reuse or new.** If you already have a verified company with verified Meta, Stripe and Google Ads accounts, run the venture as a new brand under it: that skips incorporation and most verifications (about 2-3 days to M0). Sharing a Meta portfolio is a founder decision with no default, because one policy strike can stop both ventures' ads. Always new: domain, handles, Facebook Page, brand Google account, a card (a virtual card labelled for the venture until a company card exists), a model-provider account with capped keys, and every metered workspace (hosting, database, mail, CI budget, outreach, posting). **(learned the hard way)**: an unpaid balance on another business's ad account under the same login blocked the new Page for 2.5 days.
+**Reuse or new.** If you already have a verified company with verified Meta, Stripe and Google Ads accounts, run the venture as a new brand under it: that skips incorporation and most verifications (about 2-3 days to M0). Sharing a Meta portfolio is a founder decision with no default, because one policy strike can stop both ventures' ads. Always new: domain, handles, Facebook Page, brand Google account, a card (a virtual card labelled for the venture until a company card exists), a model-provider account with capped keys, and every metered workspace (hosting, database, mail, CI budget, outreach, posting). **(learned the hard way)**: an old billing problem on another ad account under the same login blocked the new Page for 2.5 days.
 
 **Agent prep before S1a (about 3-4 agent-hours from scratch):** a read-only standing check of every ad account, billing page and plan the founder's login can see; `ACCESS.md`; a field sheet of every value the founder will type; one validating script per expected secret, dry-run; every console open in run-sheet order in a dedicated venture browser profile. In S2 the whole Meta path goes in one go: Business Verification, an ad account in the checkout currency, two payment methods, one small forced charge, a spending limit, a second admin, domain verification and the system-user tokens. Anything that fails becomes a tracked item before the sitting ends. Console paths: `02-day0-accounts.md`.
 
@@ -328,7 +328,7 @@ Every number states its source and time; one session owns each. Visitors are peo
 
 ---
 
-## 13. Do-not list (each happened on Givi)
+## 13. Do-not list (drawn from the Givi launch)
 
 1. Build a different shape from the one asked for, or let two agent families build the same surface.
 2. Harden or review at scale before the founder has used the product.
@@ -338,12 +338,12 @@ Every number states its source and time; one session owns each. Visitors are peo
 6. Let the ads session own warm outreach, or launch paid into a funnel already seen failing.
 7. Count visitors without filtering bots, put tracking after `#`, or split-test on hundreds of visitors.
 8. Make films before a static has won, or post volume on new social accounts.
-9. Use whatever login is open, or share a balance, card, quota or login with another business.
+9. Use whatever login is open, or share a balance, card, quota or login with another venture.
 10. Run Google Workspace setup or recovery wizards on a personal account, or study competitors while signed in.
 11. End a turn on a question or "waiting", or hand the founder an untested command.
 12. Add broad allow rules, pre-allow tools that move money, deploy from a laptop, or leave CI unfunded.
 13. Run watchdogs inside agent sessions or judge alarms with AI instead of fixed rules.
-14. Automate posts, comments or messages on the founder's personal LinkedIn or WhatsApp, even with them watching; LinkedIn's User Agreement bans automated activity.
+14. Let an agent post, comment or message as the founder on LinkedIn or WhatsApp, even with them watching; LinkedIn's User Agreement forbids bots and automated posting.
 
 ---
 

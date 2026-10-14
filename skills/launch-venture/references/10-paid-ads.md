@@ -49,6 +49,7 @@ Run by a session that does not own the ads and did not build the sign-up path. T
 1. **In-app browser emulation.** With gstack's `browse` headless browser (or Playwright), at a phone viewport, using each real in-app user-agent string:
 
    ```bash
+   B=~/.claude/skills/gstack/browse/dist/browse   # as in 04-landing-pages.md
    $B viewport 390x844
    $B useragent "<current Instagram in-app user agent for iOS>"
    $B goto https://yourdomain.com/?utm_source=meta
@@ -71,7 +72,7 @@ Re-run items 1 and 2 after every app release before and during the test. Givi sh
 
 ## 3. Meta setup
 
-**First, the founder's standing.** Meta treats a person with an unpaid balance on any ad account they administer as a payment risk on everything they manage. On Givi, a small unpaid balance (under $50) on another business's ad account was the most likely reason Meta refused every new card and the Page for about 2.5 days; the agent first blamed browser anti-fraud and cost the founder about 3 hours of retries. **(learned the hard way)** So the agent first reads Billing & payments and Account Quality for **every** ad account the founder's login can see (Claude in Chrome, read-only) and lists any balance due or failed charge for the founder to pay.
+**First, the founder's standing.** Meta treats a person with an unpaid balance on any ad account they administer as a payment risk on everything they manage. On Givi, an old billing problem on another ad account under the same login was the most likely reason Meta refused every new card and the Page for about 2.5 days; the agent first blamed browser anti-fraud and cost the founder about 3 hours of retries. **(learned the hard way)** So the agent first reads Billing & payments and Account Quality for **every** ad account the founder's login can see (Claude in Chrome, read-only) and lists any balance due or failed charge for the founder to pay.
 
 Then, in order. Steps 1-3 belong in sitting S1b, right after the name pick; steps 4-12 in sitting S2, the day the company number arrives (`01-framework.md`). Founder minutes are in brackets.
 
@@ -110,7 +111,7 @@ Read the real daily spending limit in the Billing hub too: Givi assumed "about $
 | Reader | Employee, "View performance" on the ad account | `ads_read` | Never | The app server (for its ads report) and the alarm's scheduler |
 | Manager | Ad account full control, Page, Instagram | `ads_management`, `ads_read`, `business_management` (Page publishing or comment scopes only if planned) | 60 days | The founder's Mac keychain only; renewal reminder at day 50 |
 
-Givi made one broad 60-day token and stored it on the app server too, so a server break-in would have handed over the ad account and the Page. **(learned the hard way)**
+Keep the manager token narrow and off the app server: a server break-in would otherwise hand over the ad account and the Page. **(recommended, not tested by us)**
 
 **Hand-off:** the agent writes one local script per token that reads the clipboard, validates the token against a versioned Graph URL, prints only names, scopes, assets and expiry, stores it (keychain via `security add-generic-password -U -s <service> -a <account> -w`, plus the host variable for the reader token only), clears the clipboard, prints "accepted" and deletes itself. The agent dry-runs it with a dummy value first; the founder copies the token and double-clicks. The token never appears in chat. **(done on Givi)**
 
@@ -155,7 +156,7 @@ claude mcp add --transport http --client-id <META_APP_ID> meta-ads https://mcp.f
 
 It needs a Meta developer app with the "Create & manage ads with ads MCP server" use case. It is also available as a connector in Claude on the web and desktop. Givi used it from day 19. **(done on Givi)**
 
-**Permissions.** Pre-allow the read tools and paused creates of campaigns, creatives and ads. Never pre-allow `ads_activate_entity`, `ads_create_ad_set` (it carries a budget), `ads_update_entity` (it can change budgets and status) or any Graph call that sets `status=ACTIVE`; those run only after the founder names the number and says go. The founder's Facebook login often reaches other businesses' ad accounts, so pin the venture's ad account ID in an access file and check the ID and name before every write. Givi's agents opened the wrong portfolio first. **(learned the hard way)**
+**Permissions.** Pre-allow the read tools and paused creates of campaigns, creatives and ads. Never pre-allow `ads_activate_entity`, `ads_create_ad_set` (it carries a budget), `ads_update_entity` (it can change budgets and status) or any Graph call that sets `status=ACTIVE`; those run only after the founder names the number and says go. The founder's Facebook login often already manages other ad accounts, so pin the venture's ad account ID in an access file and check the ID and name before every write. Givi's agents opened the wrong portfolio first. **(learned the hard way)**
 
 **Build order (about 10 minutes):**
 
@@ -184,7 +185,7 @@ It needs a Meta developer app with the "Create & manage ads with ads MCP server"
 
 **The day before:** publish one test ad set with status **paused** to surface API-versus-UI errors without spending; open every final URL and confirm its source shows on your funnel page; run the copy linter; clear every Billing hub notice and read back the spending limit; install the delivery alarm (section 8) and fire it once on purpose; re-run the in-app sign-up check on the latest release.
 
-**Launch in daytime,** on the founder's budget number and their dated "go", given in the chat of the session that will switch the ads on. Givi launched at about midnight UK time **(learned the hard way)**. Then immediately: `ads_activate_entity` on the campaign; `ads_get_errors` on its IDs; `ads_get_ad_entities` for `effective_status`; fix errors with `ads_update_entity`; publish remaining drafts in Ads Manager; confirm "In review" or "Active". Set a one-shot check at +2 hours and +24 hours inside the session (Claude Code's `CronCreate` is fine for that). The daily alarm must not live there.
+**Launch in daytime,** on the founder's budget number and their dated "go", given in the chat of the session that will switch the ads on. Givi launched outside working hours **(learned the hard way)**. Then immediately: `ads_activate_entity` on the campaign; `ads_get_errors` on its IDs; `ads_get_ad_entities` for `effective_status`; fix errors with `ads_update_entity`; publish remaining drafts in Ads Manager; confirm "In review" or "Active". Set a one-shot check at +2 hours and +24 hours inside the session (Claude Code's `CronCreate` is fine for that). The daily alarm must not live there.
 
 ---
 
@@ -274,7 +275,7 @@ Only if planned; before 3 payers the capped test is Meta. Givi's Google results:
 
 **Account (about 30 minutes, agent driving the founder's signed-in browser):**
 
-- Create it under the venture's own brand Google login. Givi's sat under a login that already ran another business's ads, and the guided setup kept offering that business's profile. **(learned the hard way)**
+- Create it under the venture's own brand Google login. Givi's sat under a login that already managed other ad accounts, and the guided setup kept offering an unrelated profile. **(learned the hard way)**
 - ads.google.com > New account > **Switch to Expert Mode** > **Create an account without a campaign**, so Google does not walk you into a Smart campaign. Type the site and name instead of accepting pre-fills; set country, time zone and currency (permanent) before the payment form. The founder enters the card.
 - **Turn off auto-applied recommendations** that change bids, budgets, keywords or targeting (Recommendations > Auto-apply).
 - **Advertiser verification** (Billing > Advertiser verification) and **identity verification**: the founder starts both the same day. Organisation accounts need a registration document and the representative's photo ID, and the business name must match the payments profile exactly. Google says verification can take up to 30 days. Until it passes, the ad shows a placeholder globe instead of your logo, and Givi's account was told identity verification would be required for any change from 24 Oct 2026. **(done on Givi)**
@@ -300,7 +301,7 @@ If it fits (consumer or creator products):
 
 - The founder creates the TikTok Business Center and ad account (currency, time zone), verifies the phone, and links the brand's TikTok account as the ad identity on the same day. Givi's launch was blocked because the identity was not linked. **(learned the hard way)**
 - **Prepay a fixed amount** (manual payment): ads stop when the balance runs out, which works as a hard cap. **(done on Givi)**
-- Minimums: about $20 a day per ad group (or $50 if the budget sits at campaign level), so a £50 prepay lasts about 2.5 days. TikTok says most ads are reviewed within 24 hours; Givi's took more than 6, and every edit goes back to review.
+- Minimums: about $20 a day per ad group (or $50 if the budget sits at campaign level), so a £50 prepay lasts about 3 days at the ad-group minimum. TikTok says most ads are reviewed within 24 hours; Givi's took more than 6 hours, and every edit goes back to review.
 - Build in the UI with Claude in Chrome in the founder's own browser (TikTok blocks the gstack browser). Website traffic objective, landing page views, the pixel, budget on the ad group, TikTok placement only (untick partner apps), identity set to "Only show as ads", one call to action.
 - **Before publishing,** remove TikTok's AI-suggested text and auto-added "selling points" (Givi's ad was given "5-Star Reviews", "Top Seller Ranking" and "Fast & Free Shipping", none true), and switch off automatic enhancements that replace music and dub audio. **(learned the hard way)**
 - Never use a tool that creates TikTok campaigns live; Adspirer's did, so Givi built by hand.

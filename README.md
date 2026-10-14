@@ -1,13 +1,13 @@
 # Venture Launch Playbook
 
-I launched Givi (heygivi.com), an AI assistant for owners of small teams, in 26 days. Almost all of the work was done by Claude Code and Codex: about 190 agent sessions and about 360 pull requests. We built two products and threw one away, and spent about £110 on ads. On day 26 we had zero paying customers.
+I launched Givi (heygivi.com), an AI assistant for owners of small teams, over 26 calendar days, as a side experiment alongside my other work. Almost all of the work was done by Claude Code and Codex: about 190 agent sessions and about 360 pull requests. We built two products and threw one away, and spent about £110 on ads. At the end of those 26 days we had zero paying customers.
 
 Only about 2.5 of those 26 days were real waits on someone else: registering the company, Meta's business verification, ad reviews. The rest went to three mistakes:
 - the agents built a different product from the one I asked for on day 0 (about 7.5 days);
 - selling started late (no warm messages, no cold emails);
 - ads went to a sign-in screen that did not work for about 5 days.
 
-I spent an estimated 75 hours, mostly passing information between agent sessions.
+My own part was an estimated 75 hours across those 26 days, nowhere near full-time, and most of it went on passing information between agent sessions.
 
 Afterwards I had agents read every session transcript and write down what we did, which tool we used for each step, what broke and how we fixed it. Separate reviewer agents then took it apart: what should have been done better, and faster.
 

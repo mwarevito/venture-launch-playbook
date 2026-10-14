@@ -1,6 +1,6 @@
 # Payments with Stripe, from zero to the first real payment
 
-A subscription product needs very little billing to take its first dollar: Stripe Checkout as the sign-up, a small webhook, the customer portal and one table that says who has access. This file takes you from an empty Stripe account to live payments, with the agent doing almost all of it and the founder spending about 45 minutes across three short sittings (S1a, S2 and S3b). Refund buttons, top-ups and plan ladders wait until someone has paid.
+A subscription product needs very little billing to take its first dollar: Stripe Checkout as the sign-up, a small webhook, the customer portal and one table that says who has access. This file takes you from an empty Stripe account to live payments, with the agent doing almost all of it and the founder spending about 30 minutes across three short sittings (S1a, S2 and S3b), plus the money and tax decisions. Refund buttons, top-ups and plan ladders wait until someone has paid.
 
 **Done when:** a live Stripe account can charge and pay out; the app creates its own product, prices, webhook and portal from one key in both sandbox and live; every offer has passed a live preflight (a Checkout session created, read and expired); and the founder has paid with a real card, been refunded, and the agent has seen the refund in Stripe and in the app's database.
 
@@ -61,7 +61,7 @@ The agent writes each option in one plain sentence with a recommendation; the fo
 
 Eligible codes include `txcd_10103001` (SaaS, business use) and `txcd_10105002` (AI as a service, cloud, business use). Stripe can withdraw Managed Payments later if it decides a product involves human work.
 
-On Givi the sandbox ran under Managed Payments, so Checkout failed with a generic error until the product got a SaaS tax code (found in Stripe's request log). Vito kept Managed Payments without fully understanding the question: the explanation he got was the agent's own summary, and nobody checked whether live mode used it. **(learned the hard way)** The agent quotes Stripe's docs and the current fee when it presents this choice.
+On Givi the sandbox ran under Managed Payments, so Checkout failed with a generic error until the product got a SaaS tax code (found in Stripe's request log). **(learned the hard way)** The agent quotes Stripe's docs and the current fee when it presents this choice, never only its own summary, and checks which model live mode uses.
 
 ---
 
@@ -222,7 +222,7 @@ Card-trial protections (built on Givi after an adversarial review found ten hole
 - Offer "Start my plan now" (`trial_end="now"` on the subscription).
 - One switch with off, team and all, plus a kill switch. Switching a money feature on for everyone is the founder's call, in their own words.
 
-**Legal check before a card trial.** Selling to UK consumers brings the Consumer Contracts Regulations (cancellation rights for digital services, consent to start at once), card-network rules on disclosing free trials, and the DMCC Act 2024 subscription regime, which law firms in March 2026 did not expect in force before autumn 2026 at the earliest; check GOV.UK on the day. US states have automatic-renewal laws. Write a one-page check mapping each rule to a line in your terms and a screen in your flow (see `14-company-legal.md`). Givi did not. **(recommended, not tested by us)**
+**Legal check before a card trial.** Selling to UK consumers brings the Consumer Contracts Regulations (cancellation rights for digital services, consent to start at once), card-network rules on disclosing free trials, and the DMCC Act 2024 subscription regime, which law firms in March 2026 did not expect in force before autumn 2026 at the earliest; check GOV.UK on the day. US states have automatic-renewal laws. Write a one-page check mapping each rule to a line in your terms and a screen in your flow (see `14-company-legal.md`). **(recommended, not tested by us)**
 
 ---
 
@@ -294,7 +294,7 @@ Orientation, not tax advice; confirm with an accountant and see `14-company-lega
 - **A UK seller, roughly:** UK VAT registration becomes compulsory once taxable turnover passes £90,000 in 12 months. Selling digital services to EU consumers from outside the EU has no threshold: EU VAT is due from the first sale, usually through one non-Union One-Stop Shop registration. US states set their own thresholds, which Stripe Tax's monitoring flags. Business buyers with a VAT number are generally reverse-charged.
 - **The choice:** selling to consumers internationally without registering anywhere points to Managed Payments (section 2). Selling only to businesses usually makes plain Stripe plus Stripe Tax cheaper.
 
-Givi never wrote down its tax or seller-of-record position, chose to sell to individuals too, and on 12 Oct 2026 nobody knew its live tax status. **(learned the hard way)**
+Get VAT advice and write down your tax and seller-of-record position, including whether you sell to individuals, before ads run, so anyone can say what your live tax status is. **(recommended, not tested by us)**
 
 ---
 
@@ -372,7 +372,7 @@ The founder, in a private browser window:
 
 The agent then checks: `charge.refunded` delivered; refund and subscription rows in the database; the account created on return; the usage cap raised after the charge and lowered after the refund; receipt and refund emails received.
 
-**Make it a hard gate.** No ad money moves until the agent has seen `charge.refunded` and the database rows. Give it its own message as a 5-minute item. On Givi it was offered as optional several times; once the founder replied "forget it now", and ads ran five days without it. Then the sign-up path changed shape and went live to all ad traffic with no completed payment on that path. **(learned the hard way)** Repeat the test whenever the sign-up or payment path changes. A founder purchase that is refunded tests the path; never count it as revenue.
+**Make it a hard gate.** No ad money moves until the agent has seen `charge.refunded` and the database rows. Give it its own message as a 5-minute item. On Givi it was offered as optional several times, then put off, and ads ran five days without it. Then the sign-up path changed shape and went live to all ad traffic with no completed payment on that path. **(learned the hard way)** Repeat the test whenever the sign-up or payment path changes. A founder purchase that is refunded tests the path; never count it as revenue.
 
 ---
 

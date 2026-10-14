@@ -38,11 +38,11 @@ On day 0 the founder, Vito, gave a direction that later proved to be the right s
 | 1. Frame and research | 17-19 Sep (0-2) | Codex framed the brief in three rounds of multiple-choice questions (about 40 minutes); research streams; naming; legal route; local prototypes. On day 2 a hosting document proposed one persistent agent server per business | Goal and buyer set; two of three prototypes rejected |
 | 2. First real loop | 20-21 Sep (3-4) | A 7-model eval inside the pinned agent container (about $5); a working local pilot in about 48 minutes; then "nobody will buy this" and a reset to "Givi, an AI hire" | Name chosen, domain bought |
 | 3. Identity | 21-23 Sep (4-6) | Domain, hello@ forwarding, social handles, a UK limited company | Company exists on day 6. The filing takes about a day; the rest was a late start |
-| 4. The detour | 22-26 Sep (5-9) | After a cost challenge, and without asking the founder, Codex built a platform that started a fresh virtual machine per task: 4 hosting services, 45 secured tables, credits, a 156-finding review, overnight outages. On day 8 the founder called production garbage | Mostly replaced within 48 hours |
+| 4. The detour | 22-26 Sep (5-9) | After a cost challenge, and without asking the founder, Codex built a platform that started a fresh virtual machine per task: 4 hosting services, 45 secured tables, credits, a 156-finding review, overnight outages. On day 8 the founder rejected production | Mostly replaced within 48 hours |
 | 5. Pivot | 26-27 Sep (9-10) | Claude rebuilt Givi as one persistent, white-labelled agent per customer in about 31 hours; Meta Business Verification passed | Friends go-live on day 10 |
 | 6. Quality and testers | 27 Sep-2 Oct (10-15) | Quality round, redesign, domain move, ops monitoring, a $69 early-bird price, tester reviews, first films | Good enough for strangers; positioning shaken by a large AI lab's competing launch |
 | 7. Big push and go-to-market setup | 3-6 Oct (16-19) | Go-to-market session started on day 16.8; 13 build agents in one night; live Stripe; Slack; a landing split test; socials; pixels; ad accounts | Ads usable on day 19, after a 2.5-day payment block |
-| 8. Paid launch | 7-8 Oct (20-21) | Meta and Google live just before midnight on 7 Oct, TikTok next day; price cut to $49 | Ads barely delivering; zero conversions at launch |
+| 8. Paid launch | 7-8 Oct (20-21) | Meta and Google live late on 7 Oct, TikTok next day; price cut to $49 | Ads barely delivering; zero conversions at launch |
 | 9. Funnel repair | 9-12 Oct (22-25) | Failed card holds on Meta; the sign-in leak fixed; one landing; a card trial; checkout as sign-up | First real sign-up from an ad on 12 Oct; no card yet |
 
 ---
@@ -63,7 +63,7 @@ The last row is the honest size of the launch with the same tools and new accoun
 
 1. **Product shape, day 9.5.** Everything shipped before the pivot was a platform the founder would not sell.
 2. **Company, day 6.** Every verification needs the legal identity. A UK company registers online in about 24 hours for £100, after each director verifies their identity through GOV.UK One Login (GOV.UK, checked 13 Oct 2026). It could have existed on day 1.
-3. **Meta usable for ads, day 19.7.** Verification took 19 hours. The Facebook Page then sat about 12 days with no owner after a failed SMS check, and an unpaid balance on another business's ad account under the same login blocked every card for 2.5 days.
+3. **Meta usable for ads, day 19.7.** Verification took 19 hours. The Facebook Page then sat about 12 days with no owner after a failed SMS check, and an old billing problem on another ad account under the same login blocked every card for 2.5 days.
 4. **Live payments, day 17.** Mostly a key swap waiting on the founder's paste. The real-card test was never done.
 5. **Paid launch, day 21, then about 4 days of lost delivery:** a Meta A/B test object that held delivery until the next midnight, failed card holds hidden behind "Active" for about 2 days, and an hour of ads showing an old price.
 6. **Sign-in that works for ad traffic, day 25.9.**
@@ -88,11 +88,11 @@ Warm outreach, the cheapest route to a first payer for a $49 product, never got 
 
 Only the founder can do four kinds of work: identity checks, money, taste, and first contact with people they know. Each took minutes once the options were laid out. The roughly 75 hours went mostly elsewhere: **(learned the hard way)**
 
-- **Switchboard.** Carrying state between more than 90 sessions he talked to directly, often after midnight. At least 30 messages were pure relaying ("i'm really lost").
+- **Switchboard.** Carrying state between more than 90 sessions he talked to directly. At least 30 messages were pure relaying.
 - **Acceptance testing for agents that had drifted.** About 15 hours over 25-27 Sep, finding out the agents had built the wrong product and forked two versions.
 - **Broken hand-offs.** About 10 hours of wall clock on secret steps a dry run would have caught: a model key took about 2.5 hours, the live Stripe key about 3 hours (the first paste held two keys glued together), a directory reviewer password about 2 hours for a 30-second paste.
 - **Permission blocks.** Every safety-classifier block on a deploy became a script for him to run. One rollout took about 16 hours.
-- **Status questions.** After a "few pings" rule, problems went quiet too ("what should I do??? how are ads?"). Two sessions reported different Meta numbers on the same day.
+- **Status questions.** After a "few pings" rule, problems went quiet too. Two sessions reported different Meta numbers on the same day.
 
 Meanwhile the one growth step only he could take, approving and sending warm notes, never reached him as a ready batch.
 
@@ -106,12 +106,12 @@ Meanwhile the one growth step only he could take, approving and sending warm not
 
 One root cause sat behind six separate incidents: no account was reused on purpose, so agents used whatever login was open. **(learned the hard way)**
 
-1. An unpaid balance on another business's ad account under the same login blocked the new Facebook Page and every card for 2.5 days.
-2. The Google Ads account was created under a login that manages another business's ads.
-3. The model-provider credit was shared with another business's paying customers and fell to a few dollars on launch night.
-4. A Google Workspace "domain in use" recovery for hello@ turned the founder's personal Gmail into a Workspace account.
-5. The YouTube channel stayed on another business's Workspace account, where it cannot be moved.
-6. A competitor teardown run while signed in switched on six live cold-email campaigns in the founder's account of that tool, on a balance shared with another business.
+1. An old billing problem on another ad account under the same login blocked the new Facebook Page and every card for 2.5 days.
+2. The Google Ads account was created under a login that already managed other ad accounts.
+3. The model-provider credit was a shared model-credit balance and fell to a few dollars on launch night.
+4. A Google Workspace "domain in use" recovery for hello@ was run from an existing login. That recovery can convert a personal Gmail into a Workspace account, so use a fresh brand account.
+5. The YouTube channel was created under a Workspace account outside the venture, where it cannot be moved.
+6. A competitor teardown run while signed in switched on six live cold-email campaigns in an existing account of that tool, on a shared balance.
 
 ---
 
@@ -138,7 +138,7 @@ Ranked by how much each would have moved the first payment and how much founder 
 - **What happened.** The six incidents above. **(learned the hard way)**
 - **Why.** Nobody decided, so whatever login was open got used.
 - **Do instead.** On day 0, fill one table with a row per account. If you already have a verified company with verified accounts, reusing the entity skips incorporation and most verifications. Always new per venture: domain, handles, Facebook Page, a brand Google account, a model-provider account with capped keys, a card (a virtual card labelled for the venture works until a company card exists), and every metered workspace (hosting, database, mail, CI budget, outreach, posting), because a shared limit or quota lets one venture take another offline. Before any Meta step, an agent reads every ad account the founder's login can see for unpaid balances. Run competitor studies only in fresh, signed-out accounts. Sharing a Meta portfolio is a founder decision with no default: one policy strike can stop both ventures' ads. See `02-day0-accounts.md`. **(recommended, not tested by us)**
-- **Estimated saving.** With reuse, 6-10 calendar days on the Meta, Stripe and Google path; in every case, the 2.5-day block and the risk to another business's customers.
+- **Estimated saving.** With reuse, 6-10 calendar days on the Meta, Stripe and Google path; in every case, the 2.5-day block and the risk of one venture taking another offline.
 
 ### 4. Put a numeric funnel gate before any ad spend, run by a session that does not own the ads
 
@@ -149,7 +149,7 @@ Ranked by how much each would have moved the first payment and how much founder 
 
 ### 5. Make one operator session the founder's only contact, and never let a question stop the work
 
-- **What happened.** The founder talked to more than 90 sessions, most opened by himself, one per topic. Questions stopped work: Codex ended a turn on a decision card one evening and nothing moved until noon the next day. A usage limit hit at 03:15 and lifted within about an hour, but nothing restarted the work for about 9 more hours. A key request sat unseen inside a status message for over an hour. **(learned the hard way)**
+- **What happened.** The founder talked to more than 90 sessions, most opened by himself, one per topic. Questions stopped work: Codex ended a turn on a decision card one evening and nothing moved until noon the next day. A usage limit hit and lifted within about an hour, but nothing restarted the work for about 9 more hours. A key request sat unseen inside a status message for over an hour. **(learned the hard way)**
 - **Why.** Nobody owned the founder-facing view, so his head was the only place where every session's state came together. Questions had no defaults, nothing resumed work after a limit, and Codex never received his standing rules.
 - **Do instead.** One long-lived operator session per venture is the only contact. It opens at most three role sessions (product and release; revenue, from day 0; acquisition, near the funnel gate) plus a second agent family as reviewer. It runs every action that needs the founder's yes inside its own conversation, checks claims live before reporting, and writes state into the repo. Questions go out in two fixed windows a day, never between 22:00 and 08:00, each with a recommendation and, if reversible, a default that applies at a stated time. A one-shot resume is armed at every usage-limit reset. The 09:00 digest leads with one revenue action only the founder can take. See `01-framework.md` and `12-running-agents.md`. **(recommended, not tested by us)**
 - **Estimated saving.** About half the founder's daily attention and 1.5-2.5 calendar days.
@@ -163,7 +163,7 @@ Ranked by how much each would have moved the first payment and how much founder 
 
 ### 7. Get buyer evidence before setting positioning and price
 
-- **What happened.** An interview script and an observation protocol existed from day 0; neither was run. The positioning was rewritten about six times ("AI hire", "Hand it the job", three directions after a competitor launch, "Your $1,000+ hire", "AI agents that know the job. With a human touch."), each time after founder frustration, a developer friend's opinion or a competitor's launch. None of the four testers (the founder, a co-founder, a developer friend, a family member) was a target buyer. Effort spread over the UK, the US, a four-country test, a second language and 8 business types. **(learned the hard way)**
+- **What happened.** An interview script and an observation protocol existed from day 0; neither was run. The positioning was rewritten about six times ("AI hire", "Hand it the job", three directions after a competitor launch, "Your $1,000+ hire", "AI agents that know the job. With a human touch."), each time after founder frustration, a tester's opinion or a competitor's launch. None of the four testers (the founder and three friendly testers) was a target buyer. Effort spread over the UK, the US, a four-country test, a second language and 8 business types. **(learned the hard way)**
 - **Why.** Nothing forced buyer evidence, and agents can ship any idea the same day, so building replaced asking.
 - **Do instead.** On day 0, write one market, one buyer, one first paid job, the "why us" sentence and a stop rule (no payer after 20 warm conversations and 5 calls, or after the written ad budget, means the offer or the audience changes while the feature list stays as it is). Book 5 buyer calls in week 1 from introductions. Freeze positioning for two weeks; any change cites something a buyer said or did. At least 3 of the first 5 testers are target buyers. See `03-positioning-pricing.md`. **(recommended, not tested by us)**
 - **Estimated saving.** Positioning settled by about day 3 instead of still moving on day 25.
@@ -177,7 +177,7 @@ Ranked by how much each would have moved the first payment and how much founder 
 
 ### 9. Set up the agents' operating system on day 0
 
-- **What happened.** Deploys ran from laptop checkouts through Claude Code's auto-mode safety classifier; one batch went live about 15 hours after merging. CI was down about 7 days on GitHub billing, then failed again on a $0 Actions budget and was disabled. Two deploys from stale checkouts overwrote other work. Commands starting with `!` arrived as chat text at least 6 times, because the founder runs Claude Code in the VS Code panel, where `!` lines do not execute. The global settings grew to 180 allow rules and no deny rules, and five incidents happened under the founder's identity, including a LinkedIn post as him and his Gmail turned into a Workspace account. Codex's rules file was a fraction of Claude's, so the two kept undoing each other's copy fixes. **(learned the hard way)**
+- **What happened.** Deploys ran from laptop checkouts through Claude Code's auto-mode safety classifier; one batch went live about 15 hours after merging. CI was down about 7 days on GitHub billing, then failed again on a $0 Actions budget and was disabled. Two deploys from stale checkouts overwrote other work. Commands starting with `!` arrived as chat text at least 6 times, because the founder runs Claude Code in the VS Code panel, where `!` lines do not execute. The global settings grew to 180 allow rules and no deny rules, and five incidents happened under the founder's identity. Codex's rules file was a fraction of Claude's, so the two kept undoing each other's copy fixes. **(learned the hard way)**
 - **Why.** Nobody designed deploys, permissions, hand-offs or the rules home on day 0; each was patched under pressure.
 - **Do instead.** A bootstrap before any build: byte-identical `AGENTS.md` and `CLAUDE.md` with the founder's rules mirrored into Codex; CI with a funded Actions budget and a deploy job on merge (concurrency lock, stale-checkout guard, content-hash check, `/api/version`); a narrow permission pack with deny rules for deletes and nothing that switches ads on, loaded once and every session restarted; a brand-only browser profile for automated public actions; secret hand-offs through a small validating script, after checking where the founder runs Claude Code (`echo $CLAUDE_CODE_ENTRYPOINT`); the app database off the server volume. See `12-running-agents.md`. **(recommended, not tested by us)**
 - **Estimated saving.** About 1 day on the critical path and 8-10 hours of hand-off waits.
@@ -200,7 +200,7 @@ Ranked by how much each would have moved the first payment and how much founder 
 | Choosing models with small real evals | A 7-model eval for about $5, a blind 6-model comparison for about $4, an effort judge that matched the expected answer in 37 of 39 cases **(done on Givi)** |
 | Speed once the shape was right | Decision to friends go-live in about 27 hours; the hosting deploy in 15 minutes; self-serve sign-up from a warm pool of ready servers **(done on Givi)** |
 | A fast iteration loop | Four reviewed tester sessions turned into about 15 PRs, most live within a day **(done on Givi)** |
-| The founder and a family member as testers | Each session found bugs the tests missed **(done on Givi)** |
+| The founder and friendly testers | Each session found bugs the tests missed **(done on Givi)** |
 | Release safety | Rollouts that wait for idle users, rollback tags, a stale-checkout guard, feature flags, canary on the founder's account first **(done on Givi)** |
 | The validating secret script | The Meta system-user token in 8 minutes; it caught two Stripe keys pasted together **(done on Givi)** |
 | Policy checks before building a channel | Meta's ban on general-purpose AI assistants over WhatsApp found in about 1.5 hours, before any build **(done on Givi)** |

@@ -118,7 +118,7 @@ Give all design agents one shared chat-screen component in your product's own lo
 3. `$B js "document.documentElement.scrollWidth > innerWidth"` prints `false` at 390 and 1440 px; section positions do not move after animations.
 4. Every number is read from the DOM. A screenshot of an animated counter can catch it mid-count.
 5. Your own fixes pass `BANS.md` too. **(learned the hard way)** Givi's coordinator fixed a looping animation by adding a banned Replay button.
-6. No personal files unless the founder supplied them for this. **(learned the hard way)** An agent built a direction around a portrait of Vito found on his computer and published it to the review link before he saw it.
+6. No personal files unless the founder supplied them for this. **(learned the hard way)** An agent used a personal photo from the local machine without asking, built a direction around it and published it to the review link before the founder saw it.
 
 **One private gallery link, one question.** Desktop and phone thumbnails of each direction with its headline and honesty notes, published to one private URL and republished to the same URL every round (a claude.ai artifact on Givi; any private static page works). Embed non-Google fonts as base64 `@font-face`, and check `document.fonts` on the published link in a fresh browser. **(learned the hard way)** Fonts that rendered locally failed twice on Givi's gallery link after "done" was reported. Ask "pick one or two; anything you hate?" with a recommendation, and keep working.
 
@@ -278,7 +278,7 @@ Exclude the team (a cookie set when they open the app or admin pages, their IP f
 - Test with Meta's test events, TikTok's test event code and Google Tag Assistant. **(learned the hard way)** Givi's check fired a fake sign-up into three live dashboards.
 - Expect low consent, and decide on your server counts.
 
-**See what visitors do.** Session replay after Allow: Microsoft Clarity (free; since 31 Oct 2025 it needs a consent signal for EEA, UK and Swiss visitors) or PostHog. Alert when a paid source's Start rate falls below about a third of direct traffic's after 100 visits **(recommended, not tested by us)**. Givi found its 1-in-60 Meta Start rate a week into ads.
+**See what visitors do.** Session replay after Allow: Microsoft Clarity (free; since 31 Oct 2025 it needs a consent signal for EEA, UK and Swiss visitors) or PostHog. Alert when a paid source's Start rate falls below about a third of direct traffic's after 100 visits **(recommended, not tested by us)**. Givi found its 1-in-60 Meta Start rate only after days of paid traffic.
 
 ---
 
