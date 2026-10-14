@@ -4,7 +4,7 @@ How to organise Claude Code and Codex so they can launch a business without the 
 
 **Done when:** the founder has exactly one session to talk to and at most three role sessions run beside it; every change ships as a PR from its own worktree and deploys only from CI; `AGENTS.md` and `CLAUDE.md` hold the same rules; a narrow permission pack with deny rules is loaded; every expected secret has a validating script; each browser job has an assigned tool; and neither a usage limit nor an unanswered question can leave the work idle overnight.
 
-> **What happened on Givi.** About 190 Claude Code and Codex sessions built Givi in 26 days, with up to six Claude sessions plus Codex at once and 13 build agents in one night. Most of the lost time came from how the agents were organised. The founder talked directly to about 94 sessions, and at least 30 of his messages only carried information between them. Two agents built two versions of the product for about a week. An 88-agent review hit the usage limit after 18 minutes and 81 of its agents failed. Hosted CI was dead for about 7 days on a $0 billing budget. A one-hour usage limit at 3 a.m. became about 10 idle hours. Each piece below was learned one incident at a time; set it up on day 0 instead, in about half a day of agent time and 30-40 minutes of the founder's.
+> **What happened on Givi.** About 190 Claude Code and Codex sessions built Givi in 26 days, with up to six Claude sessions plus Codex at once and 13 build agents in one night. Most of the lost time came from how the agents were organised. The founder talked directly to about 94 sessions, and at least 30 of his messages only carried information between them. Two agents built two versions of the product for about a week. An 88-agent review hit the usage limit after 18 minutes and 81 of its agents failed. Hosted CI was dead for about 7 days on a $0 billing budget. A one-hour usage limit mid-push became about 10 idle hours. Each piece below was learned one incident at a time; set it up on day 0 instead, in about half a day of agent time and 30-40 minutes of the founder's.
 
 Feature facts here were checked against the Claude Code docs (code.claude.com) and the Codex docs on 13 Oct 2026. These tools change fast; re-check anything that names a version.
 
@@ -24,7 +24,7 @@ Cap: the operator plus at most three role sessions, plus the reviewer. Givi had 
 
 ## 2. One operator session as the founder's only contact
 
-**Learned the hard way.** The founder opened a new session per topic and became the only place where every session's state came together: "is this included in your summary?", "I'm really lost", "what was this session about initially?". Long sessions were summarised automatically at least four times and lost the thread. The fix is one session that owns the founder-facing view, with handoffs written into files instead of pasted between chats.
+**Learned the hard way.** The founder opened a new session per topic and became the only place where every session's state came together, asking which summary included what and what a session had been about. Long sessions were summarised automatically at least four times and lost the thread. The fix is one session that owns the founder-facing view, with handoffs written into files instead of pasted between chats.
 
 1. **Start the operator from the repo root.** Do the same for every session: Claude Code files sessions by starting directory, and one started from the home folder disappears from the editor's list **(learned the hard way)**.
 2. **The founder pastes one opener (1 minute):**
@@ -115,7 +115,7 @@ Use builder sub-agents for three or more independent tracks. Givi's best night: 
 
 ### 3.5 Resuming after a usage limit with a scheduled one-shot wake
 
-**Learned the hard way.** At 3:15 a.m. the limit hit mid-push and killed a reviewer mid-review. It lifted after about 55 minutes. Nothing woke the session until the founder wrote "hey, what's the status?" about 9 hours later.
+**Learned the hard way.** The limit hit mid-push and killed a reviewer mid-review. It lifted after about 55 minutes. Nothing woke the session until the founder asked for a status about 9 hours later.
 
 **Recommended, not tested by us:** when a limit message shows a reset time, schedule one wake-up for the reset plus 5 minutes.
 - Ask in plain words: "at 05:15, resume the push using operations/templates/resume.md". Claude Code creates a one-shot `CronCreate` task that deletes itself after firing.
@@ -189,7 +189,7 @@ When the context fills, Claude Code summarises earlier turns (automatically, or 
 2. **Contents:** scope and owners; every standing authorization written once with "do not ask for this consent again"; "work in a worktree from origin/main"; "status covers the product only"; "keys pasted in chat are used and logged by name"; where the canon lives. Rewrite the scope line when authority changes: Givi's still said "no advertising spend or messages to others were requested" three weeks after both had started.
 3. **The founder's personal rules** live in their global `~/.claude/CLAUDE.md`, mirrored by a small script into `~/.codex/AGENTS.md` after each change **(recommended, not tested by us)**. Codex joins the global and project `AGENTS.md` files and by default stops adding instruction files at 32 KiB (`project_doc_max_bytes`), so mirror a short rules section.
 4. **Venture-only taste** (design references and copy bans) goes in `bd/TASTE.md` and `bd/BANS.md`, as in the layout in `01-framework.md`, linked from both rules files.
-5. **Every correction lands everywhere the same turn:** grep briefs, scripts, skills and scheduled instructions for the old behaviour. A Givi scheduled run published a post as the founder from a plan written before he banned founder posts.
+5. **Every correction lands everywhere the same turn:** grep briefs, scripts, skills and scheduled instructions for the old behaviour. A Givi scheduled run acted on a plan written before the founder changed a rule.
 6. **Every failed hand-off becomes a rule the same turn.** Givi's `!` hand-off failed six times because nobody wrote down the first failure.
 
 ## 6. Permissions
@@ -261,12 +261,11 @@ A permission stops a command; only the platform stops money leaving. Set every c
 
 ### 6.4 The risk of broad allow rules
 
-**Learned the hard way.** By launch end the founder's global settings held 180 allow rules and no deny rules, including bare `railway *`, `gh *` and `launchctl *`, edits anywhere in his home folder, the whole browser binary and the Meta tool that switches ads on. Across Claude and Codex, with access this wide, five incidents happened under his identity:
-- a comment posted on the wrong LinkedIn post as him;
-- a scheduled run that published a LinkedIn post as him after he had banned founder posts;
+**Learned the hard way.** By launch end the founder's global settings held 180 allow rules and no deny rules, including bare `railway *`, `gh *` and `launchctl *`, edits anywhere in his home folder, the whole browser binary and the Meta tool that switches ads on. Across Claude and Codex, with access this wide, incidents happened under his identity:
 - live cold-email campaigns started inside a competitor's tool while an agent studied its onboarding in his signed-in browser;
-- his personal Gmail converted into a Google Workspace account by a setup wizard;
 - a test run that created a real job in his account.
+
+Two rules follow. Never let an agent post or comment as you: LinkedIn's User Agreement forbids bots and automated posting. And a Google Workspace "domain in use" recovery can convert a personal Gmail into a Workspace account, so run any setup wizard from a fresh brand account.
 
 Exact command shapes, deny rules and a dedicated browser profile would have kept the useful work and removed most of the exposure. Remove broad rules at the end of each launch (a founder action, since the agent cannot edit its own permissions).
 
@@ -402,7 +401,7 @@ Default: none (money). I will ask again at 18:00.
 
 The founder's step comes first, with minutes, at most three clicks, what success looks like and a one-word reply. Reversible questions carry a recommendation and a default that applies at a stated time. Money, first contact, anything said in the founder's name, secrets and deletions never default; they are asked in the operator chat and re-asked until answered. Accept terse answers ("1 A, 2 yes"): Givi's best round of five numbered questions took about 25 minutes **(done on Givi)**.
 
-Before a card goes out, check: the step is really the founder's; the command ran with a dummy value; the window is in front, owned by this task and named; the account written to is this venture's own; anything that spends, sends or speaks in the founder's name is its own numbered yes, never a line inside a plan answered "Go!" (a bundled "Go!" led to the unwanted LinkedIn post).
+Before a card goes out, check: the step is really the founder's; the command ran with a dummy value; the window is in front, owned by this task and named; the account written to is this venture's own; anything that spends, sends or speaks in the founder's name is its own numbered yes, never a line inside a plan answered "Go!" (a bundled "Go!" once led to an unwanted public action).
 
 ### 9.2 No blocking questions during autonomous work
 

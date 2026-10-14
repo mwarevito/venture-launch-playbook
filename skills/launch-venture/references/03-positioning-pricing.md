@@ -4,7 +4,7 @@ Decide what you sell, to whom, under which name and for how much, once, from evi
 
 **Done when:** one market, one buyer, one first paid job, a "why us" sentence and a stop rule are written down and accepted; the name has passed a full screen (domains, company register, same-category products, handles, trademarks in every launch market); price, trial and allowance come from a cost bench showing that a typical user fits inside the allowance; the offer exists only in one config module and one canon file; and five buyer calls are booked for week 1.
 
-> **What happened on Givi.** The positioning was rewritten about six times in 25 days, and the offer went through five setups in twelve days: $99 with a no-card trial, a $69 early bird, $49 with a $99 tier, a 3-day trial with the card collected at sign-up, and finally checkout as the sign-up step. Each rewrite came from founder frustration, one power-user tester or a frontier lab's launch. None came from a buyer, because nobody interviewed a target buyer in 25 days. The launch market was never chosen, so effort spread over the UK, the US, four cheap-ad markets and a second language. The name the founder finally picked was never trademark-screened, although ads ran in the UK, the US and other markets. The price was cut from $69 to $49 while almost everyone was leaving at the sign-in screen, before they ever saw a price. Every price change meant re-rendering films and images, because the price was burned into them. Givi had no paying customer by 12 Oct 2026. The order in this file is the fix: research, buyer calls, one decision batch, a cost bench, then a freeze.
+> **What happened on Givi.** The positioning was rewritten about six times in 25 days, and the offer went through five setups in twelve days: $99 with a no-card trial, a $69 early bird, $49 with a $99 tier, a 3-day trial with the card collected at sign-up, and finally checkout as the sign-up step. Each rewrite came from founder frustration, one power-user tester or a frontier lab's launch. None came from a buyer, because nobody interviewed a target buyer in 25 days. The launch market was never chosen, so effort spread over the UK, the US, four cheap-ad markets and a second language. Screen the name against trade marks in every market where ads will run, including established brands in other categories. The price was cut from $69 to $49 while almost everyone was leaving at the sign-in screen, before they ever saw a price. Every price change meant re-rendering films and images, because the price was burned into them. Givi had no paying customer by 12 Oct 2026. The order in this file is the fix: research, buyer calls, one decision batch, a cost bench, then a freeze.
 
 ---
 
@@ -86,7 +86,7 @@ Gotchas **(done on Givi)**: some big vendors' pricing pages block `WebFetch` and
 
 ## Step 3. Talk to five buyers before you position (book on day 0, hold in week 1)
 
-**(learned the hard way)** Givi wrote an interview script on day 0 and never ran it. Its four testers were the founder, a co-founder, a developer friend and a family member; none was a target buyer. One question from the developer friend ("why do I need this when my coding agent can do it?") set off a full repositioning, although he was never the buyer. The protocol below is **(recommended, not tested by us)**.
+**(learned the hard way)** Givi wrote an interview script on day 0 and never ran it. Its four testers were the founder and three friendly testers; none was a target buyer. One question from a tester ("why do I need this when my coding agent can do it?") set off a full repositioning, although that tester was never the buyer. The protocol below is **(recommended, not tested by us)**.
 
 A buyer matches the one-line buyer definition in step 4 and would pay from their own budget. Friends who build their own tools, family and the founding team do not count, however useful their bug reports are.
 
@@ -139,7 +139,7 @@ Size the first paid job like work people already pay staff or agencies for, show
 
 ## Step 5. The name screen (about 1 hour of agent time, end of day 0 or day 1)
 
-**(learned the hard way)** Givi's first naming round screened about fifteen candidates and dropped them all. Four days later Vito picked the name of an assistant bot the team already used. Nobody had asked whether he already had a name, so the screen was wasted, and the chosen name was never trademark-screened or checked against other software of the same name. Ads then ran in the UK and the US.
+**(learned the hard way)** Givi's first naming round screened about fifteen candidates and dropped them all. Four days later Vito picked the name of an assistant bot the team already used. Nobody had asked whether he already had a name, so the screen was wasted. Screen the chosen name against trade marks and same-name software in every launch market before ads run.
 
 **Ask first.** One intake line: "Do you already have a name in mind?" If yes, screen only that name. If not, collect their anchors (family or place names, words that mean something to them, domains they own) and generate 10-15 candidates.
 

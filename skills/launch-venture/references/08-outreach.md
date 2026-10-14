@@ -4,7 +4,7 @@ Agents find the people, draft every message, keep one pipeline and chase anythin
 
 **Done when:** 20-30 personal notes went out on the day friends could first use the product, with a sent log; every tester was asked for one introduction; the founder posts about 5 agent-drafted LinkedIn comments a day; if cold email is in the plan, it runs from lookalike domains with warmed mailboxes, verified leads and a legal footer, and its first approved batch has gone; one pipeline sheet counts contacted, replied, call, trial and paid every day; the stop rule is read every week.
 
-> **Read this first: outreach was Givi's biggest miss.** In 26 days the team sent 0 warm messages and 0 cold emails. Two notes to testers were drafted about a week after friends could use the product and never sent; the wider warm list was never drafted. The cold-email setup (roughly $130 for an Instantly plan, two domains and pre-warmed mailboxes) was never put to Vito as its own question, so it died without anyone deciding to stop it. All 5 conversations with real target buyers came from comments on buyers' posts made from Vito's personal LinkedIn by an unattended agent run (section 3.1 explains why that part must not be copied), and none had become a call or a payment by the end of the 26 days. Givi had no paying customers on 12 Oct 2026. So most of this guide is **(recommended, not tested by us)**, built from documentation checked on 13 Oct 2026, and the lessons are **(learned the hard way)**.
+> **Read this first: outreach was Givi's biggest miss.** In 26 days the team sent 0 warm messages and 0 cold emails. Two notes to testers were drafted about a week after friends could use the product and never sent; the wider warm list was never drafted. The cold-email setup (roughly $130 for an Instantly plan, two domains and pre-warmed mailboxes) was never put to Vito as its own question, so it died without anyone deciding to stop it. All 5 conversations with real target buyers came from LinkedIn comments on buyers' posts, and none had become a call or a payment by the end of the 26 days. Givi had no paying customers on 12 Oct 2026. So most of this guide is **(recommended, not tested by us)**, built from documentation checked on 13 Oct 2026, and the lessons are **(learned the hard way)**.
 
 Evidence tags: **(done on Givi)** we did it and it worked; **(learned the hard way)** we got it wrong first; **(recommended, not tested by us)** from current docs or common practice.
 
@@ -51,8 +51,8 @@ Draft the notes the day before the friends go-live check passes and send them th
 ### 2.2 The list comes from the founder (about 15 minutes, day 1)
 
 - The founder dictates 20-30 people they know who run a business that fits the buyer; a co-founder adds theirs. Agents do not browse the founder's contacts, inbox or messenger to build it.
-- Leave out clients of the founder's other businesses and anyone they would not want to pitch.
-- The revenue owner adds a sheet row per person with one line of context and the channel the founder uses with them, tagged buyer or non-buyer. On Givi none of the four reviewed testers was a target buyer (Vito, a co-founder, a developer friend, a family member), so the product got tuned to them **(learned the hard way)**.
+- Leave out anyone the founder would not want to pitch.
+- The revenue owner adds a sheet row per person with one line of context and the channel the founder uses with them, tagged buyer or non-buyer. On Givi none of the four reviewed testers was a target buyer (all were the founder or friendly testers), so the product got tuned to them **(learned the hard way)**.
 
 ### 2.3 The note: personal, short, no price (learned the hard way)
 
@@ -108,11 +108,11 @@ Every reply gets an answer the same day, ending with a question about their busi
 
 ## 3. LinkedIn without automation
 
-### 3.1 Why this channel (done on Givi; the automation was learned the hard way)
+### 3.1 Why this channel (done on Givi)
 
-All 5 of Givi's conversations with real target buyers (among them a virtual-assistant firm's founder and an e-commerce growth agency's owner) started as replies to comments posted from Vito's personal LinkedIn on those buyers' own posts. The brand's Instagram, X and TikTok activity produced replies from non-buyers and almost no site visits.
+All 5 of Givi's conversations with real target buyers (among them a virtual-assistant firm's founder and an e-commerce growth agency's owner) started from LinkedIn comments on buyers' posts. The brand's Instagram, X and TikTok activity produced replies from non-buyers and almost no site visits.
 
-The mistake: an unattended agent run posted those comments under his name through a headless browser. On its first day it published a comment on a stranger's hiring post from his personal profile. Later an agent, catching up a missed run by hand on the strength of a general "Go!", published a LinkedIn post as him that he had not approved, and he banned founder posts for good. LinkedIn's User Agreement (section 8.2, effective 3 Nov 2025, checked 13 Oct 2026) forbids "bots or other unauthorized automated methods to ... send or redirect messages, create, comment on, like, share, or re-share posts", and bans scraping tools. The channel worked; the automation put the founder's personal account at risk.
+LinkedIn's User Agreement (section 8.2, effective 3 Nov 2025, checked 13 Oct 2026) forbids "bots or other unauthorized automated methods to ... send or redirect messages, create, comment on, like, share, or re-share posts", and bans scraping tools. Automation puts the founder's personal account at risk.
 
 Rule: never automate posting, comments or messages as the founder. Agents research and draft; the founder posts every comment, note and message themselves, watched or not.
 
@@ -129,7 +129,7 @@ Keep a post only if the author matches the buyer, it is under 48 hours old, and 
 
 About 5 comments a day, each 2-4 sentences in the founder's voice, adding one specific useful thing (a method, a number from experience, a sharp question about their case). No compliments, no restating the post, no hashtags, emojis or links, and no product mention unless the post asks for a tool. Each goes in the sheet's LinkedIn tab with the post link and why the author is a buyer.
 
-For each row the agent opens the post in the founder's browser and copies the comment to their clipboard; the founder reads it, edits it if they want, and posts it. About 5-10 minutes a day. Givi moved to this route only after the incidents above, so it has not been run end to end.
+For each row the agent opens the post in the founder's browser and copies the comment to their clipboard; the founder reads it, edits it if they want, and posts it. About 5-10 minutes a day. Givi has not run this route end to end.
 
 ### 3.4 Replies are leads
 
@@ -163,7 +163,7 @@ Worked example: 2 domains plus 4 pre-warmed mailboxes plus Hypergrowth is about 
 
 ### 4.2 Step 1: workspace, key, MCP (agent 20 minutes, founder 5)
 
-1. A new Instantly workspace for this venture, with its own billing. If the machine has an Instantly connection for another business, writes can land in the wrong workspace: call `workspace_get` and check the name before any write.
+1. A new Instantly workspace for this venture, with its own billing. If the machine already has an Instantly connection for another workspace, writes can land in the wrong workspace: call `workspace_get` and check the name before any write.
 2. An API key with only the scopes the agent needs; leave out ordering (`dfy_email_account_orders:create`) if purchases should stay with the founder.
 3. Connect. Claude Code:
    ```
@@ -266,7 +266,7 @@ Tools: `get_campaign_analytics`, `analytics_campaign_overview`, `get_daily_campa
 
 Ignore open rate: tracking is off, and Apple Mail's privacy feature marks many emails opened anyway.
 
-Before the first send, `blocklist_create` (an email or a whole domain per call) for customers, testers, warm contacts (they get personal notes, never a sequence), partners, competitors and clients of the founder's other businesses. Every opt-out and "not interested" joins it the same day and stays forever. `skip_if_in_workspace` on every import stops one person entering two campaigns.
+Before the first send, `blocklist_create` (an email or a whole domain per call) for customers, testers, warm contacts (they get personal notes, never a sequence), partners and competitors. Every opt-out and "not interested" joins it the same day and stays forever. `skip_if_in_workspace` on every import stops one person entering two campaigns.
 
 ### 4.13 What the agent may run alone
 

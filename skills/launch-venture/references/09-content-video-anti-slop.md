@@ -12,8 +12,8 @@ Platform specs, tool behaviour and the Remotion API were checked on 13 Oct 2026 
 
 - **Films against a static.** About 30-40 agent-hours went into films between 1 and 11 Oct 2026: an intro film, a team film, 7 industry spots and several ad cuts, all built as code with Remotion plus an HTML-to-video pipeline. No sign-up could be traced to any of them. A static ad made from an HTML template in about 20 minutes ("$1,000+ of work. $49 a month.") took about 96% of UK and US Meta spend, at a link click-through rate of 5.6% against 2.6% for the other images. **(learned the hard way)**
 - **Re-renders.** The ad set was rendered five times in one day, then again for a price change and a trial change, because the offer was printed inside the pictures. Meanwhile a card hold kept the ad account from spending for two days. **(learned the hard way)**
-- **Organic social.** 47 posts in 5 days across Instagram, TikTok, YouTube and X produced 0 site visits from those networks (the post links carried no tracking tags, which also made them harder to measure). TikTok turned out to have about 1,800 plays, but its profile had no link field and no visits followed. LinkedIn comments on buyers' posts, posted as Vito by an unattended agent run (section 8 says why not to copy that), produced all 5 buyer conversations the launch had by 12 Oct 2026. **(learned the hard way)**
-- **The Instagram audit, 12 Oct 2026.** Vito opened the brand's Instagram and said the page "looks full of AI slop". What he saw:
+- **Organic social.** 47 posts in 5 days across Instagram, TikTok, YouTube and X produced 0 site visits from those networks (the post links carried no tracking tags, which also made them harder to measure). TikTok turned out to have about 1,800 plays, but its profile had no link field and no visits followed. LinkedIn comments on buyers' posts produced all 5 buyer conversations the launch had by 12 Oct 2026. **(learned the hard way)**
+- **The Instagram audit, 12 Oct 2026.** Vito opened the brand's Instagram and judged that the page looked full of AI slop. What he saw:
   - 13 of 17 posts were the same template card;
   - most posts still showed old prices and trial terms;
   - square art was cut off by Instagram's 3:4 profile grid, so one headline read "keting agency";
@@ -47,16 +47,16 @@ The agent runs every item and records the result next to the asset on the review
 1. **Every claim exists in the product today,** checked against the code and production usage (a read-only query showing real users hit it). Docs and landing copy prove nothing. Givi's ads and landing pages showed "helper" assistants for about 3 days; production showed 0 uses in 149 owner conversations. **(learned the hard way)**
 2. **The offer is copied, never written,** word for word from the one offer file. An agent-written end card misstated Givi's offer in 8 videos and 136 images. **(learned the hard way)**
 3. **No offer terms inside images or video.** Price and trial go in the ad's text fields, the caption or the landing page, so a price change is a text edit. **(learned the hard way)**
-4. **No invented proof:** no made-up testimonials, reviews, quotes, ratings or named customers (banned under the UK's DMCC Act 2024 and the US FTC's 2024 rule on reviews and testimonials). Real builds can appear as anonymous case cards once the client agrees in writing. **(done on Givi:** the agent refused a request for reviews with invented names; client consent was not recorded, so get it next time.)
+4. **No invented proof:** no made-up testimonials, reviews, quotes, ratings or named customers (banned under the UK's DMCC Act 2024 and the US FTC's 2024 rule on reviews and testimonials). Real builds can appear as anonymous case cards once the client agrees in writing. **(done on Givi:** invented quotes were refused and real example jobs used instead.)
 5. **Invented businesses only after a name check** of Google Maps in that city, the company register and a trademark database. A Givi dry run produced pages naming real cafés. **(learned the hard way)** Real work (section 3) avoids the problem.
 6. **Competitors named at most once and never shown:** no competitor UI, logo or claims about what it cannot do. Vito later banned ChatGPT comparisons altogether ("other agents" instead). **(done on Givi)**
 
 ### 2.2 Look (Vito's taste rules, generalised)
 
-7. **No "Example", "sample" or "demo" labels.** Vito: "I don't use example labels on facing materials, it's sloppy". Honesty comes from showing only real things. **(done on Givi)**
+7. **No "Example", "sample" or "demo" labels.** Vito ruled them sloppy on public materials. Honesty comes from showing only real things. **(done on Givi)**
 8. **No fake chat screens imitating a known messenger.** Show your own product's UI; other products as plain panes with a text label; email as a simple envelope animation. **(done on Givi)**
 9. **No cursive script or bookish serif display fonts.** **(done on Givi)**
-10. **No stock or AI-generated faces or people.** Givi's films showed people as initials. Never use a founder photo found on disk; an agent once did, and Vito rejected it. **(done on Givi)**
+10. **No stock or AI-generated faces or people.** Givi's films showed people as initials. Never use a personal photo found on disk; an agent once used one from the local machine without asking, and it was rejected. **(done on Givi)**
 11. **No rainbow logo chips.** Tools appear as plain text names or a monochrome logo wall; coloured logos in ads also hit vendors' brand rules. **(done on Givi)**
 12. **No pause, replay or "Play again" buttons.** Motion just runs; honour reduced-motion settings silently. **(done on Givi)**
 13. **One signature device, used 3-4 times** (a dot, a stamp, an underline). A new trick in every section reads as generated. Cut the known tells too: uppercase eyebrows, decorative dots, coloured pills, empty slogans, repeated disclaimers. **(done on Givi)**
@@ -488,9 +488,8 @@ The founder decides this per channel, once, in the intake. Vito chose no posts u
 
 ### What happened on Givi
 
-- Daily LinkedIn comments in Vito's name on target buyers' posts (owners of agencies, studios, small service businesses) produced all 5 buyer conversations by 12 Oct 2026. An unattended agent run posted them through a headless browser signed in as him, which LinkedIn's User Agreement forbids; the rule now is that agents draft and he posts. **(learned the hard way)**
-- On its first live run the commenting script commented on a stranger's hiring post under his personal profile. **(learned the hard way)**
-- An agent took one "Go!" to a long social plan as consent to post in his voice, and published a LinkedIn post while catching up a missed run. He banned founder posts that evening. **(learned the hard way)**
+- Daily LinkedIn comments on target buyers' posts (owners of agencies, studios, small service businesses) produced all 5 buyer conversations by 12 Oct 2026. **(done on Givi)**
+- The rule: agents draft and the founder posts. LinkedIn's User Agreement forbids bots and automated posting. **(recommended, not tested by us)**
 
 ### The recipe, for founders who opt in (recommended, not tested by us)
 

@@ -20,7 +20,7 @@ Telegram Bot API, Slack, Composio and Vapi details and Meta's WhatsApp policy we
 | Telegram | The default messenger for an assistant product: open policy, free, bots are first-class | Live on day 10; testers used it most **(done on Givi)** |
 | Slack | Only when buyers ask; a free beta at most before a Marketplace listing | About 15 minutes of coding **(done on Givi)** |
 | WhatsApp | Check policy per market first; barred for general-purpose AI assistants in the UK and US as of Oct 2026 | Found after the channel was already on landing pages **(learned the hard way)** |
-| Phone number | After a web call has proven demand, and only when owners ask | Failed on the first call from abroad **(learned the hard way)** |
+| Phone number | After a web call has proven demand, and only when owners ask | Failed on the founder's first call **(learned the hard way)** |
 | Web call (WebRTC) | The first voice option, inside the app or a Telegram Mini App | About 18 minutes to build **(done on Givi)** |
 | Instagram DM, Messenger, email-in | After 3 payers; Meta messaging scopes need App Review | Built and proven for a review, not sold **(done on Givi)** |
 
@@ -161,7 +161,7 @@ Givi's agent edited the manifest through the page's code editor, because the cod
 
 ## 5. Voice: a web call first
 
-> **What happened on Givi.** The first voice feature was a phone number on Vapi with a custom-LLM endpoint and a spoken PIN, about 1 hour to build plus 35 minutes of setup. Vito's first call, made from abroad, never reached Vapi: his calling app wanted international credit, and the free number only takes calls. Vapi's free numbers are US-only and call only US and Canada numbers (Vapi docs, checked 13 Oct 2026). The question of who pays for call minutes came up only afterwards. **(learned the hard way)**
+> **What happened on Givi.** The first voice feature was a phone number on Vapi with a custom-LLM endpoint and a spoken PIN, about 1 hour to build plus 35 minutes of setup. The founder's first test call never reached Vapi, and the free number only takes calls. Vapi's free numbers are US-only and call only US and Canada numbers (Vapi docs, checked 13 Oct 2026). The question of who pays for call minutes came up only afterwards. **(learned the hard way)**
 
 What worked: a **web call inside a Telegram Mini App**, about 18 minutes to build and 38 minutes from complaint to live. A `/call` command opens a page that starts a Vapi web call over WebRTC: no number, no carrier. The owner is proven by Telegram's signed `initData` (at most an hour old), then a 10-minute signed call token; the public key is restricted to the app's origin and one assistant. A 48-second test call cost about $0.05. **(done on Givi)**
 
@@ -214,11 +214,11 @@ Hand-built OAuth means registering an app with every provider, and Google's sens
 | Nango | Full white-label, but you register your own app with every provider |
 | Own OAuth apps | For the top 1-2 vendors after 3 payers, when a branded consent screen or push triggers matter |
 
-Read the aggregator's commercial-use terms and get a data-processing agreement before charging customers. Givi read Composio's terms as unclear on commercial use and never got written confirmation. **(learned the hard way)**
+Read the aggregator's commercial-use terms and get a data-processing agreement before charging customers. If the terms read as unclear on commercial use, ask for written confirmation. **(recommended, not tested by us)**
 
 ### 7.2 Wiring it
 
-- **Account:** sign up with the brand Google account (or the Google Workspace address once you have moved to Workspace; see `02-day0-accounts.md`), two-factor on, a second admin, the workspace and project recorded in the access register. On Givi the account was opened with one of Vito's personal Google logins, and a day later nobody knew which. **(learned the hard way)** The key arrives through the validating script and lives only on the app server.
+- **Account:** sign up with the brand Google account (or the Google Workspace address once you have moved to Workspace; see `02-day0-accounts.md`), two-factor on, a second admin, the workspace and project recorded in the access register. On Givi the sign-up login was not recorded, and a day later nobody knew which login held the account. **(learned the hard way)** The key arrives through the validating script and lives only on the app server.
 - **One identity per customer:** each owner's connections live under their own `user_id`. Connections start with `connectedAccounts.initiate(<user_id>, <auth_config_id>)`, which returns a redirect URL ([Composio docs](https://docs.composio.dev/docs/auth-configuration/white-labeling), checked 13 Oct 2026). **(done on Givi)**
 - **Agents never hold the platform key.** Givi's agents talk MCP to a proxy on the app's private port (the public URL returns 404); the proxy pins each agent to its owner's `user_id`. An adversarial review found the first version on a public URL guarded only by a token in the path, which a leak could have used to read a customer's mail or CRM. **(learned the hard way)**
 - **Block the aggregator's general-purpose sandbox tools** (remote code and shell) and gate each item inside batch-execute tools on its own. They could bypass approvals. **(learned the hard way)**

@@ -12,7 +12,7 @@ Evidence tags: **(done on Givi)** we did it and it worked; **(learned the hard w
 
 Two rules sit under every recipe:
 
-1. **Reuse nothing that holds money.** Each venture gets its own card, hosting workspace, model-provider account and ad accounts. On Givi, a small unpaid balance on an ad account from another of the founder's businesses made Meta refuse every new card and the Facebook Page for about 2.5 days, and the AI model credit was a pool shared with another live product that nearly ran dry on launch night. **(learned the hard way)**
+1. **Reuse nothing that holds money.** Each venture gets its own card, hosting workspace, model-provider account and ad accounts. On Givi, an old billing problem on another ad account under the same login made Meta refuse every new card and the Facebook Page for about 2.5 days, and the AI model credit was a shared model-credit balance that nearly ran dry on launch night. **(learned the hard way)**
 2. **One access register, read before anything is created.** Two agents working in parallel on Givi created two Google Cloud projects under two different Google accounts 90 minutes apart, and one recommended an email service the other had wired the day before. **(learned the hard way)**
 
 ## The dependency chain
@@ -86,7 +86,7 @@ Some accounts need something that does not exist yet. That is why the founder's 
   - **OpenAI Platform:** Settings > Organization limits > Spend, and per project Settings > Project settings > Limits > Spend. Alerts only email you; a hard limit makes requests fail with a 429.
   - A separate small-capped key for the agents' own tests.
 - **Founder only:** the card, top-up amount and limits.
-- **Gotcha:** Givi's credit came from a pool shared with another live product. On launch night it fell below $10, paid calls were frozen for about 19 hours, and the other product's paying customers were at risk. There was no balance alert. **(learned the hard way)**
+- **Gotcha:** Givi's credit came from a shared model-credit balance. On launch night it fell below $10 and paid calls were frozen for about 19 hours. There was no balance alert. **(learned the hard way)**
 - **Verify:** a test call per key; the balance shows in the daily digest; a key over a tiny cap is refused.
 
 ### 8. Stripe in test mode
@@ -138,7 +138,7 @@ You need an inbox for hello@ (plus support@, privacy@ and a named address such a
 4. Replies as hello@: until Google retires it (January 2027), Gmail's Settings > See all settings > Accounts and Import > Send mail as > Add another email address can send through `smtp.resend.com`, port 465, username `resend`, password = a sending key restricted to your domain. Google may already refuse a new setup, so treat this as a stopgap and plan the move to route B. **(recommended, not tested by us)**
 5. Founder, once the logo is locked: set it as the account's profile photo at myaccount.google.com; Gmail shows it as the sender avatar (the alternative, BIMI, needs a registered trade mark).
 
-- **Gotchas:** the first test right after saving a rule bounced with "550 5.1.1 Address does not exist"; wait for Enabled. Never forward hello@ to a personal inbox or another company's: on Givi it forwarded into another business's mailbox for weeks, where privacy and deletion requests would have landed and no agent could read them. **(learned the hard way)**
+- **Gotchas:** the first test right after saving a rule bounced with "550 5.1.1 Address does not exist"; wait for Enabled. Never forward hello@ to a personal inbox or another company's: on Givi mail was forwarded to a mailbox outside the venture for weeks, where no agent could read it. **(learned the hard way)**
 
 #### Route B: Google Workspace (recommended, not tested by us; from Google's documentation, checked 13 Oct 2026)
 
@@ -151,9 +151,9 @@ You need an inbox for hello@ (plus support@, privacy@ and a named address such a
 7. **Aliases and shared addresses.** An alias (Admin console > Directory > Users > the user > Alternate email addresses) is free, up to 30 per user, and lands in one person's inbox: fine for hello@ and privacy@ (allow up to 24 hours). A Google Group (Directory > Groups > Create group) is free and reaches several people: use it for support@ once a second person helps, and allow external senders or outside mail bounces. Only a real extra mailbox needs a licence.
 8. **Profile photo.** Set the logo on the account that sends customer mail.
 
-#### The trap: never turn a personal Gmail into the business account (learned the hard way)
+#### The trap: never turn a personal Gmail into the business account (recommended, not tested by us)
 
-On Givi, an agent in a browser signed in to the founder's personal Gmail clicked Google Admin's "Get set up" and "connect a domain you already own" and entered the venture's domain, on a general "do it all yourself". The next day the personal Gmail was a managed Workspace account with the venture address as primary, and the cancellation screen warned that mail and files would be permanently deleted. A support case and five days later, the founder separated the accounts himself.
+If an agent in a browser signed in to a personal Gmail clicks Google Admin's "Get set up" and "connect a domain you already own" and enters the venture's domain, the personal Gmail can become a managed Workspace account with the venture address as primary. Undoing that can take a support case and several days. Use a fresh brand account instead.
 
 Why, per Google's documentation: Workspace can be started "with a Gmail address". If a domain is then verified on that account, the personal Gmail becomes a domain-verified admin account under the custom address; Google Family, Fit and Nest stop working on it, and a super admin can later delete all of it. Any personal account already using an address on the domain becomes a conflicting account to be transferred in or renamed (to a temporary `@gtempaccount.com` name). "This domain is already in use" means some account already holds the domain; use the recovery form, not "free up domain".
 
@@ -199,7 +199,7 @@ Claim every handle on the founder's phone in S1b. Avatars and bios wait for the 
 | 1 | Facebook Page | Founder creates it in Meta Business Suite inside the portfolio (section 15), on their phone, after the debt check | Automated attempts triggered an SMS check that blocked it for us; do it while the phone is in hand |
 | 2 | Instagram | Professional (Business) account, added to the portfolio at once (Business settings > Instagram accounts > Add) | Switching later cost a second round |
 | 3 | LinkedIn page | linkedin.com/company/setup/new from the founder's personal profile; agent fills the form, founder clicks Create | LinkedIn may want a profile older than seven days with connections and a work email on your domain, so mail must already arrive **(recommended, not tested by us)** |
-| 4 | YouTube | Channel created from the brand Google account with the final name and handle | A channel under another organisation's account could not be moved **(learned the hard way)** |
+| 4 | YouTube | Channel created from the brand Google account with the final name and handle | A channel under a Workspace account outside the venture could not be moved **(learned the hard way)** |
 | 5 | X | Only if your buyers are there | Givi paid for X posting tools and got almost no reach |
 | 6 | TikTok | Only if the product fits short video; created in the phone app with the final username and display name | Display name locks for 7 days after a change, username for 30; automated sign-up hit "Maximum number of attempts reached" **(learned the hard way)** |
 
@@ -207,15 +207,15 @@ Agents never automate a social sign-up or type invented identity data into a rea
 
 - **Verify:** each profile loads signed out and has a register row with owner and second admin.
 
-> **What happened on Givi.** The Facebook Page failed silently when an agent filled the form, then stalled on an SMS check the founder could not find in his app. Nobody owned the retry, and the Page took about two weeks, blocking ads and Instagram linking; the founder then created it from Business Manager in minutes. TikTok took 11 days and ended up as an old personal account renamed.
+> **What happened on Givi.** The Facebook Page failed silently when an agent filled the form, then stalled on an SMS check the founder could not find in his app. Nobody owned the retry, and the Page took about two weeks, blocking ads and Instagram linking; the founder then created it from Business Manager in minutes. TikTok took 11 days.
 
 ### 15. Meta business portfolio (S1b) and the rest of Meta (S2)
 
-- **S1b:** create or choose the business portfolio at business.facebook.com, details exactly as on the company register, then add the Page and Instagram. First the founder pays any unpaid balance on any ad account they administer: Meta treats the person as a payment risk everywhere, and new Pages and cards fail with a vague error. Meta limits how many portfolios one person can create (2, per its help centre when we checked); Givi's founder was at his limit and renamed an empty old portfolio rather than delete one.
+- **S1b:** create or choose the business portfolio at business.facebook.com, details exactly as on the company register, then add the Page and Instagram. First the founder pays any unpaid balance on any ad account they administer: Meta treats the person as a payment risk everywhere, and new Pages and cards fail with a vague error. Meta limits how many portfolios one person can create (2, per its help centre when we checked).
 - **S2:** Business Verification (Meta Business Suite > Security Center > Start verification), the developer app (make the irreversible Tech Provider choice on purpose), the ad account in your checkout currency (permanent), two payment methods and one small charge before launch day, a spending limit read back through the API, a second admin, domain verification, and two system-user tokens (read-only and never expiring for the server and alarms; a 60-day management token kept only in the secrets store). Steps in `10-paid-ads.md` and `11-platform-approvals.md`.
 - **Founder only:** Facebook login and 2FA, creating the Page and ad account (agents' safety checks block that), the ID upload, the irreversible choice, cards.
 - **Wait:** about 19 hours on Givi; Meta says up to 14 business days, and changing business details later means verifying again.
-- **Gotcha:** upload an original camera photo of the ID, at least 1500 x 1000 pixels. Never upscale or edit an identity image: Givi's upscaled passport photo was followed by "technical issues", and another ID worked. **(learned the hard way)**
+- **Gotcha:** use an original, uncompressed photo of your ID, at least 1500 x 1000 pixels. Never upscale or edit an identity image. **(recommended, not tested by us)**
 - **Verify:** the Meta Ads MCP (`ads_get_ad_accounts`, `ads_get_ad_account_pages`) sees the Page, Instagram and ad account.
 
 ### 16. Analytics and watchers (agent, no founder time)
@@ -238,10 +238,10 @@ Agents never automate a social sign-up or type invented identity data into a rea
 
 ### 18. Google Ads and advertiser verification (only if Google ads are planned)
 
-- **Steps:** signed in as the brand Google account (never a login that holds another business's ads), create an account at ads.google.com and, at the business-information step, choose to create it without a campaign (Expert mode), so Google does not walk you into a Smart campaign that starts spending. Set country, time zone and currency (permanent; your checkout currency), stop at payment, and turn off auto-applied recommendations that change bids, budgets, keywords or targeting. Advertiser verification asks for organisation details, payment history (a small refunded test charge) and identity by D-U-N-S number or company documents; once Google asks, you have 30 days to start and 30 to finish, or ads are paused. Review takes up to 5 business days.
+- **Steps:** signed in as the brand Google account (never a login that already manages other ad accounts), create an account at ads.google.com and, at the business-information step, choose to create it without a campaign (Expert mode), so Google does not walk you into a Smart campaign that starts spending. Set country, time zone and currency (permanent; your checkout currency), stop at payment, and turn off auto-applied recommendations that change bids, budgets, keywords or targeting. Advertiser verification asks for organisation details, payment history (a small refunded test charge) and identity by D-U-N-S number or company documents; once Google asks, you have 30 days to start and 30 to finish, or ads are paused. Review takes up to 5 business days.
 - **D-U-N-S:** optional for Google, needed for Apple's organisation developer account. Dun & Bradstreet says every UK-registered business gets one automatically, free; look it up at dnb.co.uk when the company number arrives (D&B says it answers requests within five working days; the free US route can take 30 business days). **(recommended, not tested by us)**
 - **Founder only:** the card and the verification forms (agents' safety checks blocked typing into them on Givi).
-- **Gotcha:** Givi's Google Ads account sat under a login that also manages another business's ads, because the brand had no Google account yet, and verification started 18 days after incorporation. **(learned the hard way)**
+- **Gotcha:** Givi's Google Ads account sat under a login that already managed other ad accounts, because the brand had no Google account yet, and verification started 18 days after incorporation. **(learned the hard way)**
 - **Verify:** billing shows a payment method and no warnings; verification reads in progress or verified.
 
 ### 19. TikTok Ads (only if planned)
@@ -251,7 +251,7 @@ In TikTok Business Center and Ads Manager: the ad account (currency, time zone),
 ### 20. Other S2 items, where they apply
 
 - The ICO data protection fee and a registered-office provider for a UK company (`14-company-legal.md`).
-- Company-owned OpenAI and Claude organisations, with OpenAI Business verification, if you will list in the ChatGPT or Claude directories. Listing ownership cannot be moved later; Givi's Claude listing sits on a personal account. **(learned the hard way)**
+- Company-owned OpenAI and Claude organisations, with OpenAI Business verification, if you will list in the ChatGPT or Claude directories. Listing ownership cannot be moved later, so create it under the company from the start. **(recommended, not tested by us)**
 - Apple Developer enrolment as an organisation for a mobile app (needs a D-U-N-S number).
 
 ## Sitting S3, once there is a public URL
@@ -297,7 +297,7 @@ On Givi the same accounts arrived piecemeal over about three and a half weeks, t
 - [ ] Workspace only: domain verified, DKIM started, aliases or groups set
 - [ ] Resend domain verified; `_dmarc` with a report address; sending keys restricted to the domain; a real sign-in code passes SPF, DKIM and DMARC
 - [ ] Facebook Page, Instagram (professional), LinkedIn page, YouTube on the brand account; X and TikTok only if planned; 2FA and second admin on each
-- [ ] Meta portfolio matches the register; no unpaid balances on the founder's other ad accounts
+- [ ] Meta portfolio matches the register; no unpaid balances on any other ad account the founder's login can see
 - [ ] Own funnel, Search Console, error and uptime monitoring under the brand account
 
 **S2, company number arrives**

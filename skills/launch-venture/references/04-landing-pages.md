@@ -118,7 +118,7 @@ Give all design agents one shared chat-screen component in your product's own lo
 3. `$B js "document.documentElement.scrollWidth > innerWidth"` prints `false` at 390 and 1440 px; section positions do not move after animations.
 4. Every number is read from the DOM. A screenshot of an animated counter can catch it mid-count.
 5. Your own fixes pass `BANS.md` too. **(learned the hard way)** Givi's coordinator fixed a looping animation by adding a banned Replay button.
-6. No personal files unless the founder supplied them for this. **(learned the hard way)** An agent built a direction around a portrait of Vito found on his computer and published it to the review link before he saw it.
+6. No personal files unless the founder supplied them for this. **(learned the hard way)** An agent used a personal photo from the local machine without asking, built a direction around it and published it to the review link before the founder saw it.
 
 **One private gallery link, one question.** Desktop and phone thumbnails of each direction with its headline and honesty notes, published to one private URL and republished to the same URL every round (a claude.ai artifact on Givi; any private static page works). Embed non-Google fonts as base64 `@font-face`, and check `document.fonts` on the published link in a fresh browser. **(learned the hard way)** Fonts that rendered locally failed twice on Givi's gallery link after "done" was reported. Ask "pick one or two; anything you hate?" with a recommendation, and keep working.
 

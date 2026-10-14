@@ -47,7 +47,7 @@ Agree this once, on day 0, as a default the founder answers with "yes". (done on
 - **Instant:** money moved (a payment or refund), a real new sign-up, something broken that needs the founder, or a founder step that blocks the critical path right now.
 - **Everything else:** the 09:00 digest and the 18:00 line. Never hourly. Givi's funnel pings first went out hourly; Vito said "it distracts me a lot", and visits moved into the digest and the 18:00 line. (learned the hard way)
 - **Failed scheduled runs** go to a heartbeat service. The founder hears only if they must act.
-- **The alert home:** the venture's own product if it can message the founder, otherwise a dedicated Telegram bot for this venture; never a personal chat or bot used for other businesses. Write it into the brief and into the instruction file every agent reads. **When the rule changes, grep every run brief, script and scheduled job for the old channel the same day.** Givi's rule changed and scheduled runs kept using the old channel for four more days. (learned the hard way)
+- **The alert home:** the venture's own product if it can message the founder, otherwise a dedicated Telegram bot for this venture; never a personal chat or a bot shared with anything else. Write it into the brief and into the instruction file every agent reads. **When the rule changes, grep every run brief, script and scheduled job for the old channel the same day.** Givi's rule changed and scheduled runs kept using the old channel for four more days. (learned the hard way)
 - **Recurring job status belongs on a board** (a jobs page in the product); the messenger is for "needs you now". (done on Givi)
 
 ---
@@ -117,7 +117,7 @@ Default: none (money). I will ask again at 18:00.
 14 Oct  minutes requested: 22  questions: 3 (D4, D5, F-07)  pings: 1 (sign-up)  answered late: 0  defaults applied: 1
 ```
 
-Targets: under 30 minutes and at most 5 questions a day, zero asks between 22:00 and 08:00. Anything above is explained in the next digest, and each week every question a standing rule could have answered becomes a rule. Givi never counted: the estimate afterwards was about 75 hours of founder attention in 26 days, with well over 100 messages sent between 23:00 and 06:00. (learned the hard way)
+Targets: under 30 minutes and at most 5 questions a day, zero asks between 22:00 and 08:00. Anything above is explained in the next digest, and each week every question a standing rule could have answered becomes a rule. Givi never counted: the estimate afterwards was about 75 hours of founder attention in 26 days. (learned the hard way)
 
 ---
 
@@ -192,7 +192,7 @@ Givi spent three review rounds rediscovering standard alerting rules after one w
 - A timeout on every headless run, an hourly catch-up keyed on its output file, and a lock file.
 - Never touch the Desktop, Documents or Downloads folders from a scheduled run: macOS shows a permission prompt and the run waits for a click. That is how Givi's run hung for 8 hours. (learned the hard way)
 - Set `PATH` explicitly in every launchd job; `node` and `vercel` were not found otherwise. Diagnose with `launchctl list`, `plutil -p <plist>` and `pmset -g log | grep -E 'Sleep|Wake'`. (learned the hard way)
-- **No unattended, late or catch-up run acts in public as the founder.** On Givi an agent replayed a missed run by hand and, on the strength of a general "Go!" given the day before, published a post on Vito's personal LinkedIn that he had not approved; founder posts were then banned outright. Agents draft; the founder posts. A late run re-reads the current rules and skips every public action. (learned the hard way)
+- **No unattended, late or catch-up run acts in public as the founder.** On Givi an agent replayed a missed run by hand on the strength of a general "Go!" given the day before; founder posts were then banned outright. Never let an agent post or comment as the founder: LinkedIn's User Agreement forbids bots and automated posting. Agents draft; the founder posts. A late run re-reads the current rules and skips every public action. (learned the hard way)
 
 ### Day-0 money watchers
 
@@ -213,7 +213,7 @@ Givi spent three review rounds rediscovering standard alerting rules after one w
 
 Within an hour of each of the first 20 real sign-ups, the revenue owner drafts a two-line note from the founder: thanks, one question ("what is the one job you want off your plate this week?"), and a 15-minute call link. It goes into the founder's email drafts (for example with the Gmail connector's `create_draft`) or as a ready Telegram text; the founder taps Send, about a minute each. On day 2, a short check-in if there is no first result yet. (recommended, not tested by us)
 
-Why: on Givi the two outside testers wrote 1-3 messages each and stopped, the first stranger typed "hello" and left, and a co-founder's account went to sleep when its trial ended. Automated lifecycle emails alone brought none of them back. (learned the hard way)
+Why: on Givi the two outside testers wrote 1-3 messages each and stopped, the first stranger typed "hello" and left, and a tester's account went to sleep when its trial ended. Automated lifecycle emails alone brought none of them back. (learned the hard way)
 
 ### Tester sessions, reviewed the same day
 
