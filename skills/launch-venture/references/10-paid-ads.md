@@ -31,7 +31,7 @@ What worked: once the Meta Ads MCP was connected, a full Meta build took about 6
 |---|---|
 | Budget | About 100 in total, 10-15 a day |
 | Market | One: the launch market, where the likeliest payers are |
-| Structure | One campaign, one ad set, broad targeting, 2-3 static ads running. Make 3-5 statics so you have replacements |
+| Structure | One campaign; one ad set per named segment (2-4 at most), each aimed at business owners (section 5a), each with its own ad and its own landing state; 2-3 statics per segment. Make 3-5 statics so you have replacements |
 | Winner signal | Meta concentrates spend on one ad, usually within a day (about 96% on Givi). That ad is the winner you keep |
 | Video | One short video of the winning hook, only after a static has won (`09-content-video-anti-slop.md`) |
 | Stop rule | Stop at the cap, or at 150 landing visits with 0 sign-ups, whichever comes first |
@@ -145,6 +145,26 @@ Build all of this in one change, on day 1-2, before any creative exists.
 
 ---
 
+## 5a. Who to aim at: named segments, not everyone
+
+**Do not generalise.** The founder's rule after the Givi test: if you try the product on everyone, you end up chasing cheaper clicks, and you never learn who your buyer is. Start with 2-4 named segments (for Givi: clinics, cafés, barbershops, small shops). Give each its own ad and its own landing page or landing state (Givi used `?biz=clinic`, `?biz=cafe`), and judge each on sign-ups and card trials per counted visitor, never on cost per click.
+
+**What broad buys.** From 11 to 15 Oct, Givi's broad audience (Advantage+ audience on, optimised for landing page views) put 91% of spend on Facebook and Instagram Reels at about £0.15 a click with a 5-10% click rate. That brought 334 counted visitors, 1 account and 0 card trials. In the same days, direct visitors were 10, with 3 accounts and 1 card trial. Unusually cheap clicks and an unusually high click rate for a business product mean curious tappers, not buyers. **(learned the hard way)**
+
+**Aim at people who run a business Page or an Instagram business profile.** Anyone testing a venture has to make a Facebook Page and a business Instagram before they can run ads, so the people who admin them are the cheapest filter Meta offers for founders and small-business owners. A Page proves nothing about revenue, or even a website, but it removes most casual scrollers. In Meta's detailed targeting (Digital activities):
+
+| Behavior | ID (check with `GET /search?type=adTargetingCategory&class=behaviors`) |
+|---|---|
+| Business Page admins | 6020530281783 |
+| Retail Page admins | 6020530250383 |
+| Food and restaurant Page admins | 6020530269183 |
+| Health and beauty Page admins | 6020568271383 |
+| Small business owners | 6002714898572 |
+| Instagram business profile admins | 6297846662583 |
+| New active business (<24 months) | 6273108107383 |
+
+Put the ones that fit your buyer into one group (any of), and **turn Advantage+ audience off**: otherwise Meta treats them only as suggestions. Givi's UK audience shrank to about 4-5 million people, and the US to about 21-25 million. Expect clicks to cost several times more, and judge on who acts. **Being tested on Givi from 15 Oct 2026; the result will be added here.**
+
 ## 6. Building the Meta campaign with the Meta Ads MCP
 
 Meta released an official Ads MCP server in open beta in April 2026 (checked 13 Oct 2026):
@@ -162,7 +182,7 @@ It needs a Meta developer app with the "Create & manage ads with ads MCP server"
 
 1. **Upload creatives.** `ads_creative_upload_local_image(ad_account_id, image_name=<exact file name>, mime_type)` returns an upload URL and a completion token; send the bytes in 1 MB chunks with curl or a small script; then `ads_finalize_local_ad_image_upload(completion_token)`. Name the file exactly as registered: two Givi uploads failed on a name mismatch. Check every video's processed length with `ads_get_ad_videos` and fail if it is shorter than the local file. Write this as one helper script, once.
 2. `ads_create_campaign`: objective `OUTCOME_TRAFFIC`, end date at the end of the test.
-3. `ads_create_ad_set` (after the founder's number): daily budget at that number, the one country, age 25+ for a business product, Advantage+ audience stated explicitly, no Instagram Explore placement (retired), no Audience Network, optimise for landing page views.
+3. `ads_create_ad_set` (after the founder's number): daily budget at that number, the one country, age 25+ for a business product, Advantage+ audience stated explicitly (off when you use the business-owner behaviors in section 5a), no Instagram Explore placement (retired), no Audience Network, optimise for landing page views.
 4. `ads_create_creative`: `page_id`, `instagram_user_id` from `ads_get_ig_accounts`, link, primary text, headline, call to action `SIGN_UP`, `image_hash` or `video_id`.
 5. `ads_create_ad`, one per creative, status paused. If placement asset customisation is off on a new account, each aspect ratio becomes its own ad.
 6. Pixel tracking on each ad with `ads_update_entity` (`tracking_specs`).
@@ -174,7 +194,7 @@ It needs a Meta developer app with the "Create & manage ads with ads MCP server"
 
 **Campaign structure for a small budget:**
 
-- One campaign, one ad set, broad targeting, 2-3 statics in that ad set. Keep the other statics you made (3-5 in all) as replacements.
+- One campaign, one ad set per named segment (2-4 at most), aimed at business owners (section 5a), 2-3 statics per segment, each linking to its own landing state. Keep the other statics you made (3-5 in all) as replacements.
 - Expect Meta to put most of the money on one ad within a day (about 96% on Givi) **(done on Givi)**. That concentration is your winner signal: keep that ad, cut the one short video from its hook, and swap a replacement in for any ad that trips the day-1 rule. The sign-up verdict still comes from your server funnel, stated with its sample size.
 - **Never create a Meta A/B test object** (`ads_experiment_abtest_create_test`). It starts at the next midnight, so Givi's ads sat in "Preparing" with nothing spent for about a day, and at £10-15 a day it could never reach significance anyway. The agent proposed it in the same message in which it wrote that no page could win on sign-ups at this budget. **(learned the hard way)** A real split needs about 1,000 visitors per arm within 14 days and at least about £20 a day; below that, change one thing at a time.
 - Before merging or restructuring ad sets, confirm no experiment is running with `ads_experiment_list_tests`.
@@ -192,6 +212,14 @@ It needs a Meta developer app with the "Create & manage ads with ads MCP server"
 ## 8. The delivery and billing alarm
 
 "Active" only means the switches are on. On Givi, Meta could not place its small temporary hold on the card, so nothing was delivered for about two days while every ad showed Active. `ads_get_errors` showed nothing; the notice appeared only in the Billing hub. **(learned the hard way)**
+
+**It keeps happening.** Over the first week the hold failed again and again: a third stop on 12-13 Oct lasted about 17 hours. The founder: "I keep approving my cards almost every day." He tried about five cards from different countries, company cards, a Direct Debit from the business bank and prepaid funds, and something still broke almost daily. What held up:
+
+- Keep two cards on file that have each passed a hold, ready to swap as the default.
+- Never make Direct Debit the default. Meta answered "your default payment method is not supported" for the hold.
+- Prepaid funds do not lift the block: about £46-68 sat unused while delivery was stopped.
+- After any card action ("Try again", a new default), poll impressions until they come back. A "done" is not proof: impressions returned within about 10 minutes of a working card.
+- Check delivery every day. The API showed the account, every ad set and every ad as ACTIVE with no issues during all three stops.
 
 **The rule:** if impressions are 0 for 2 hours while any ad is Active (daytime in the ad account's time zone), or nothing has been spent by mid-morning, raise one alert. The alarm is a fixed-rule script, never an agent's judgement in words. On Givi the morning check called £0 "probably normal for a test's first morning", and another day counted 34 ad-review robot page loads as proof that ads were running. **(learned the hard way)**
 
@@ -259,6 +287,7 @@ Treat this as a starting sketch **(recommended, not tested by us)**. `account_st
 | Platform "landing page views" far above your server's real visitors (Givi: about three times as many) | Accidental taps, slow in-app loads, bots. Decide on server counts |
 | Visitors before any impressions | Ad-review robots. Filter them |
 | Hourly visitors when nobody is marketing | Cloud scanners posing as phones. Count only after an interaction or 15 seconds |
+| Cheap clicks and a high click rate, but almost nobody acts | A broad audience optimised for landing page views, mostly on Reels: Meta is buying the cheapest page-openers. Narrow to business owners (section 5a) and split by segment |
 | A cheap market with huge click counts | Accidental taps and bots. Givi's India, Philippines, South Africa and Nigeria ad set cost about £0.01 a click; add an age floor of 25 and judge on cost per sign-up |
 | Pixel conversions far below server sign-ups | The consent gap. Use server counts; optimise for landing page views |
 | Google campaign and keyword missing from your data | Tracking parameters placed after a `#`. Givi's final URL ended in `#uk`, so Google appended its parameters after the fragment and they never reached the server |
@@ -347,7 +376,7 @@ If it fits (consumer or creator products):
 - [ ] Meta Ads MCP authorised; reads and paused creates allowed; activation and budgets never pre-allowed; writes pinned to the venture's ad account ID
 - [ ] Consent banner with equal-weight buttons; pixels only after Allow; Consent Mode v2 if Google runs; server-side events for consenting visitors
 - [ ] Humans-only funnel per `utm_content` with one robot filter; consent gap measured on day 1
-- [ ] 3-5 statics made; one campaign, one ad set, broad targeting, 2-3 statics in it, all built paused; video lengths checked; previews saved; no Meta A/B test object
+- [ ] 3-5 statics made; one campaign, one ad set per named segment aimed at business owners, 2-3 statics each with its own landing state, all built paused; video lengths checked; previews saved; no Meta A/B test object
 - [ ] The ad Meta concentrates spend on treated as the winner; replacements swapped in for paused ads; one short video only after a static wins
 - [ ] Paused test publish the day before; final URLs seen on the funnel page; no `#` before parameters
 - [ ] Delivery alarm on a durable scheduler with a heartbeat, fired once on purpose
