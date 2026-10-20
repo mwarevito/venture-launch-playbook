@@ -173,6 +173,12 @@ Hook rules:
 
 Use code (Remotion, or HTML captured headless) for anything that shows your product, words or numbers: it is exact, repeatable and cheap to re-render. Make one short video only after a static has won (section 3).
 
+**Style first, then the batch (learned on 16 Oct 2026).** On a second product the same founder runs, a round of ten calm, carefully briefed product films was rejected whole in one line: "complete ugliness, boring". The founder approved a single 15-second energetic showreel the same day, and every later film was held to it. Before any batch of films, build one 10-15 second style piece (or three style frames plus a five-second motion test per direction) and get the founder's yes. What the approved style had: the product's interface rebuilt as separate components that each animate (never a static screenshot), the real strings and colours copied from the live product, big headline words revealed from masks, springs and shared-element transitions, something moving in every frame, motion blur, and a synthesised score cut on the beat.
+
+**Engine choice.** HyperFrames (HTML plus GSAP, Apache-2.0, `npx hyperframes`) did that second product's films with no licence cost; Remotion did Givi's (it needs a company licence above three people). Use whichever the product's repo already has. Two HyperFrames gotchas cost time: animation callbacks never fire during a render (drive counters from a tweened property instead), and media created by script renders silent (write `<video>` and `<audio>` tags in the HTML).
+
+**Every language is a render.** Keep every on-screen string in a texts file with one entry per language and a status (copied from the product's own translation, the speaker's own words, a draft, or reviewed by whom and when). One composition renders all languages; layout may change per language, timing never does, so the second language reuses the first one's soundtrack. A script builds a review sheet for the native-speaker reviewer beside draft renders and applies the edits back. Render text-free masters too: the team uses them for their own edits.
+
 ### 4.1 A props-driven Remotion composition
 
 One composition, three shapes, every word passed in as props. Frame 0 shows the finished hook; captions are burned in inside the safe band; brand and call to action hold for the last 3 seconds; no price anywhere in the picture.
