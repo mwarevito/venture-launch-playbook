@@ -363,9 +363,26 @@ Encode with `ffmpeg -framerate 30 -i frames/f-%05d.png -c:v libx264 -pix_fmt yuv
 | The product's screens, real numbers, words, the brand | Code (Remotion, HTML capture) or a real screen recording | Exact, checkable, re-renders when wording changes |
 | A price, trial or claim | Neither: the ad text fields or the caption | A change costs nothing |
 | Abstract atmosphere or b-roll (light, texture, an object) where the brand allows AI footage | A hosted AI video tool, labelled as AI where the platform asks | Cheap mood shots; not proof of anything |
-| People, customers, a "day in the life" | Real people who agreed, or nothing | Generated faces read as fake and draw "AI slop" comments |
+| People, customers, a "day in the life" presented as real | Real people who agreed, or nothing | Generated faces passed off as customers read as fake and draw "AI slop" comments |
+| A comedy sketch or a character the founder asks for (the product as a person, a scene everyone knows is staged) | AI-generated cast and AI image-to-video, through the gated pipeline in 4.3a | Nobody is asked to believe it is real; labelled as AI where the platform asks |
 
-**(recommended, not tested by us):** Givi had an AI video generation MCP configured but never authenticated, and used none. Check the tool's commercial-use terms before any footage goes into an ad.
+Check each tool's commercial-use terms before any footage goes into an ad.
+
+### 4.3a Filmed with AI: a gated pipeline (used on 20 Oct 2026)
+
+What happened on Givi: the founder asked for a 40-second film for the Georgian market in the manner of a well-known "if a search engine were a guy" sketch: Givi as a man at a desk in an old Tbilisi courtyard, small business owners queuing with one-line asks, Givi handing back each finished job. A first cut built from AI stills moved in code had no voices; the founder asked for it filmed, with voices, and added "make sure you don't waste money, the video needs to be top notch". The filmed cut cost about $11 in all; a remaster after his notes cost nothing. His two notes became rules: the character's lips moved with no sound before a line (the edit had muted a second take of the same word and kept the picture), and the product cards on screen looked worse than the product's own landing page.
+
+The order, each step ending with something the founder can see:
+
+1. **Brief and reference.** Pull the reference video's transcript (`yt-dlp --write-auto-subs --skip-download`). Read the live landing page, the offer line, the language glossary and any brand book before writing. Write the script as a cue list: every line, who says it, 2-4 seconds a shot. Quote the cost from the shot list.
+2. **A look board before any paid footage.** One review page of real rendered frames: two or three subtitle styles (the brand book's font and the landing's font), the on-screen product UI rebuilt from the landing's own card styles (open the page headless and read its CSS: border, radius, shadow, app row, action row, status pill, primary button), title and end card options, and one still per character. The founder picks per row. Fonts and subtitles are taste, and taste is the founder's call.
+3. **Stills for the cast.** An image model that returns a full-resolution file (Figma's `gpt-image-2.5` did; Canva's generator returned only a thumbnail outside Canva). Keep one character consistent with a fixed description and distinctive wardrobe and props, and shoot the other speakers over that character's shoulder.
+4. **A bake-off on the hardest shot.** Run one close-up speaking a line in the target language on three or four image-to-video models at once, starting from the same still. Judge by transcribing each clip's audio and comparing it with the script word for word, and by full-size face crops side by side. Choose the cheapest model that ties the best. On 20 Oct 2026 through OpenRouter: Veo 3.1 Fast ($0.12 a second with audio) matched full Veo 3.1 ($0.40) on look and spoke the Georgian line exactly; Veo 3.1 Lite ($0.08) also spoke it exactly; Kling 3.0 Pro was 720p and softer with a slipped word; Seedance 2.0 refused first frames that looked like real people. The bake-off cost about $3.40.
+5. **Generate, then QC every clip.** One clip per shot, in parallel, from the approved stills; "No dialogue, nobody speaks" on silent shots and "No subtitles, no on-screen text, no music" on all. For each clip make a 2 frames-per-second strip, a transcript and a speech-energy line, and for speaking shots an 8 fps strip of the mouth. Remake only the failures (a light flare across a face and a stranger's arm crossing the frame cost $0.48 each to remake).
+6. **Voice.** Use the video model's own voice for on-camera lines when its transcript is exact: lip sync comes free. Use a voice model (ElevenLabs v4 through OpenRouter) for narration and round-trip every line through a transcription model, because it softened one Georgian consonant and turned a word into a different one.
+7. **Edit and master.** An edit list in code; subtitles that end inside their cut; cards that never cover a speaking face; music low under dialogue and out where the scene's sound carries it; loudness at -14 LUFS. Never mute a visible moving mouth: trim to the take where the lips say the line. Transcribe the whole master once more and check every line is there.
+
+Money rules: no paid footage before the look board is picked and the bake-off is done; the bake-off stays near 10% of the expected spend; a remaster reuses clips and costs nothing unless a shot itself fails, and the founder hears that number before it starts. One model router account covered stills-to-video, voices and the transcription checks; keep it separate from any account that pays for live customer services, so a video run can never drain it.
 
 ### 4.4 The ffmpeg toolbox (all run on 13 Oct 2026)
 
@@ -562,7 +579,8 @@ Rules for the loop:
 - [ ] The offer, prices and claims live in one file; no image or video prints price or trial terms
 - [ ] Every shown feature has been checked against code and real production use
 - [ ] The bans list exists in the repo and the copy linter passes on every caption and ad text
-- [ ] No "Example" labels, fake messenger screens, invented testimonials or named fake customers, cursive or bookish serif display fonts, stock or AI faces, rainbow logo chips, or pause and replay buttons
+- [ ] No "Example" labels, fake messenger screens, invented testimonials or named fake customers, cursive or bookish serif display fonts, stock or AI faces passed off as real people, rainbow logo chips, or pause and replay buttons
+- [ ] AI-filmed video: look board picked before paid footage, model bake-off on one hard shot, every clip transcribed and lip-checked, on-screen UI matches the landing
 - [ ] One signature device per page or film, used 3-4 times
 - [ ] A filming account exists in week 1, seeded, with outgoing email routed to owned inboxes
 - [ ] 3-5 statics made with the HTML-to-PNG loop, one shape, one market
