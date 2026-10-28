@@ -172,6 +172,7 @@ Run impeccable's critique or gstack `/design-review` before calling a page done.
 | Scripted QA, pixel checks | Playwright with a clean context | proves pixels fire only after Allow |
 | Page weight and load time | gstack `/benchmark` at phone width | **(recommended, not tested by us)** |
 | Brand logos | Simple Icons (`cdn.jsdelivr.net/npm/simple-icons`), inlined as SVG | swap wordmarks unreadable at tile size |
+| Ready-made components and motion | open registries: 21st.dev (the biggest index, `21st` CLI; the free plan gives 2 code installs a day, so pull from the author's own registry when it has one), shadcn/ui, Magic UI, coss ui, Motion Primitives, Kokonut UI, Cult UI (all MIT) | start from one instead of drawing from scratch, then restyle it to your own tokens (font, colours, radius, motion) and keep one showpiece per page. Check the licence first: MIT needs only the notice; "MIT + Commons Clause" (React Bits, Animate UI) is fine inside your product but never resold or republished as components; Aceternity has its own non-open licence; never copy a Pro or paid item **(recommended, not tested by us)** |
 
 Screenshot recipe:
 
